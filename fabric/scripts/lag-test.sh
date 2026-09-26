@@ -26,7 +26,7 @@ echo "=> Heights before: $(heights)"
 SINCE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
 echo "=> Starting load: $TXS txs"
-(cd "$BENCH" && node loadgen.js "$TXS" 200 > "$BENCH/lagtest_load.log" 2>&1) &
+(cd "$BENCH" && node loadgen.js "$TXS" 200 > "$BENCH/logs/lagtest_load.log" 2>&1) &
 LOAD=$!
 
 sleep 8
@@ -39,7 +39,7 @@ docker unpause "$CONTAINER" > /dev/null
 echo "=> Unfroze $VICTIM; heights: $(heights)"
 
 wait $LOAD
-tail -4 "$BENCH/lagtest_load.log"
+tail -4 "$BENCH/logs/lagtest_load.log"
 sleep 5
 FINAL_HEIGHTS=$(heights)
 echo "=> Heights after load: $FINAL_HEIGHTS"
@@ -54,7 +54,7 @@ if [ "$(tr ' ' '\n' <<<"$FINAL_HEIGHTS" | sort -u | wc -l | tr -d ' ')" != "1" ]
     echo "FAIL: orderers disagree on height: $FINAL_HEIGHTS"
     exit 1
 fi
-if ! grep -q "committed $TXS/$TXS" "$BENCH/lagtest_load.log"; then
+if ! grep -q "committed $TXS/$TXS" "$BENCH/logs/lagtest_load.log"; then
     echo "FAIL: not every transaction committed"
     exit 1
 fi

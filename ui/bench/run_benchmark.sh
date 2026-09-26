@@ -1,21 +1,24 @@
 #!/bin/bash
+# Runs the full benchmark set against whichever network is up (Algorand, or
+# stock Raft if started with RAFT=1 ../../fabric/scripts/run-network.sh).
+# Each run appends a row to results.json, which the dashboard shows.
+#
+#   ./run_benchmark.sh            # everything (~35 min)
+#   ./run_benchmark.sh quick      # skip the 100,000-transaction run
+#
+# Deploy both chaincodes first: ../../fabric/scripts/deploy-cc.sh
 set -e
+cd "$(dirname "${BASH_SOURCE[0]}")"
+mkdir -p logs
 
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-NET_DIR="$DIR/../../../teluskohf/fabric-samples/test-network-algorand"
+run() { echo; echo "=== $*"; node "$@" 2>&1 | grep -vE "t=[0-9]+s (done|submitted)=" | tee -a logs/run_benchmark.log; sleep 5; }
 
-echo "Deploying chaincode..."
-cd "$NET_DIR"
-./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-javascript/ -ccl javascript
-
-echo "Running benchmarks..."
-cd "$DIR"
-
-for txs in 1000 10000 100000; do
-    echo "================================================================"
-    echo "Running scale: $txs txs with concurrency 500"
-    echo "================================================================"
-    node loadgen.js $txs 500
-    echo "Waiting a bit before next run..."
-    sleep 10
-done
+run crash-test.js 60 20 40
+run loadgen.js 1000 25
+run loadgen.js 1000 500
+run loadgen.js 10000 500
+if [ "$1" != "quick" ]; then
+    run loadgen.js 100000 500
+fi
+run paygen.js 1000 500 1000 0.06
+run paygen.js 10000 500 1000 0.06

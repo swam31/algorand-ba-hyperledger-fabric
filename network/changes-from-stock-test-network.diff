@@ -1,0 +1,694 @@
+diff --git test-network/bft-config/configtx.yaml test-network-algorand/bft-config/configtx.yaml
+index 39b6f0f..eb5e241 100644
+--- test-network/bft-config/configtx.yaml
++++ test-network-algorand/bft-config/configtx.yaml
+@@ -117,7 +117,7 @@ Capabilities:
+     # prior releases.
+     # Prior to enabling V3.0 channel capabilities, ensure that all
+     # orderers and peers on a channel are at v3.0.0 or later.
+-    V3_0: true
++    V2_0: true
+   # Orderer capabilities apply only to the orderers, and may be safely
+   # used with prior release peers.
+   # Set the value of the capability to true to require it.
+@@ -180,6 +180,11 @@ Application: &ApplicationDefaults
+ #
+ ################################################################################
+ Orderer: &OrdererDefaults
++  Addresses:
++    - orderer.example.com:7050
++    - orderer2.example.com:7052
++    - orderer3.example.com:7056
++    - orderer4.example.com:7058
+   # Batch Timeout: The amount of time to wait before creating a batch
+   BatchTimeout: 2s
+   # Batch Size: Controls the number of messages batched into a block
+@@ -260,53 +265,81 @@ Profiles:
+       Organizations:
+         - *OrdererOrg
+       Capabilities: *OrdererCapabilities
+-      OrdererType: BFT
+-      SmartBFT:
+-        RequestBatchMaxCount: 100
+-        RequestBatchMaxInterval: 50ms
+-        RequestForwardTimeout: 2s
+-        RequestComplainTimeout: 20s
+-        RequestAutoRemoveTimeout: 3m0s
+-        ViewChangeResendInterval: 5s
+-        ViewChangeTimeout: 20s
+-        LeaderHeartbeatTimeout: 1m0s
+-        CollectTimeout: 1s
+-        RequestBatchMaxBytes: 10485760
+-        IncomingMessageBufferSize: 200
+-        RequestPoolSize: 100000
+-        LeaderHeartbeatCount: 10
+-      ConsenterMapping:
+-        - ID: 1
+-          Host: orderer.example.com
+-          Port: 7050
+-          MSPID: OrdererMSP
+-          Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/signcerts/orderer.example.com-cert.pem
+-          ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+-          ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+-        - ID: 2
+-          Host: orderer2.example.com
+-          Port: 7052
+-          MSPID: OrdererMSP
+-          Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/msp/signcerts/orderer2.example.com-cert.pem
+-          ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+-          ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+-        - ID: 3
+-          Host: orderer3.example.com
+-          Port: 7056
+-          MSPID: OrdererMSP
+-          Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/msp/signcerts/orderer3.example.com-cert.pem
+-          ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+-          ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+-        - ID: 4
+-          Host: orderer4.example.com
+-          Port: 7058
+-          MSPID: OrdererMSP
+-          Identity: ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/msp/signcerts/orderer4.example.com-cert.pem
+-          ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
+-          ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
++      OrdererType: etcdraft
++      EtcdRaft:
++        Consenters:
++          - Host: orderer.example.com
++            Port: 7050
++            ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
++            ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
++    Application:
++      <<: *ApplicationDefaults
++      Organizations:
++        - *Org1
++        - *Org2
++      Capabilities: *ApplicationCapabilities
++
++  ChannelUsingBFTBatch500:
++    <<: *ChannelDefaults
++    Orderer:
++      <<: *OrdererDefaults
++      BatchSize:
++        MaxMessageCount: 500
++        AbsoluteMaxBytes: 99 MB
++        PreferredMaxBytes: 2 MB
++      Organizations:
++        - *OrdererOrg
++      Capabilities: *OrdererCapabilities
++      OrdererType: etcdraft
++      EtcdRaft:
++        Consenters:
++          - Host: orderer.example.com
++            Port: 7050
++            ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
++            ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
++    Application:
++      <<: *ApplicationDefaults
++      Organizations:
++        - *Org1
++        - *Org2
++      Capabilities: *ApplicationCapabilities
++
++  # Stock Fabric Raft with all four orderers as consenters, same batch limits
++  # as ChannelUsingBFTBatch500. Used only with the unmodified orderer image
++  # (run-network.sh with RAFT=1) for the Algorand-vs-Raft comparison.
++  ChannelUsingRaft4Batch500:
++    <<: *ChannelDefaults
++    Orderer:
++      <<: *OrdererDefaults
++      BatchSize:
++        MaxMessageCount: 500
++        AbsoluteMaxBytes: 99 MB
++        PreferredMaxBytes: 2 MB
++      Organizations:
++        - *OrdererOrg
++      Capabilities: *OrdererCapabilities
++      OrdererType: etcdraft
++      EtcdRaft:
++        Consenters:
++          - Host: orderer.example.com
++            Port: 7050
++            ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
++            ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
++          - Host: orderer2.example.com
++            Port: 7052
++            ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
++            ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
++          - Host: orderer3.example.com
++            Port: 7056
++            ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
++            ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
++          - Host: orderer4.example.com
++            Port: 7058
++            ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
++            ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
+     Application:
+       <<: *ApplicationDefaults
+       Organizations:
+         - *Org1
+         - *Org2
+-      Capabilities: *ApplicationCapabilities
+\ No newline at end of file
++      Capabilities: *ApplicationCapabilities
+diff --git test-network/compose/compose-bft-test-net.yaml test-network-algorand/compose/compose-bft-test-net.yaml
+index 26c96b8..b185a5c 100644
+--- test-network/compose/compose-bft-test-net.yaml
++++ test-network-algorand/compose/compose-bft-test-net.yaml
+@@ -1,262 +1,279 @@
+ volumes:
+-  orderer.example.com:
+-  orderer2.example.com:
+-  orderer3.example.com:
+-  orderer4.example.com:
+-  peer0.org1.example.com:
+-  peer0.org2.example.com:
+-
++  orderer.example.com: null
++  orderer2.example.com: null
++  orderer3.example.com: null
++  orderer4.example.com: null
++  peer0.org1.example.com: null
++  peer0.org2.example.com: null
+ networks:
+   test:
+     name: fabric_test
+-
+ services:
+-
+   orderer.example.com:
+     container_name: orderer.example.com
+-    image: hyperledger/fabric-orderer:latest
++    image: ${ORDERER_IMAGE:-hyperledger/fabric-orderer:algorand}
+     labels:
+       service: hyperledger-fabric
+     environment:
+-      - FABRIC_LOGGING_SPEC=INFO
+-      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+-      - ORDERER_GENERAL_LISTENPORT=7050
+-      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+-      - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+-      # enabled TLS
+-      - ORDERER_GENERAL_TLS_ENABLED=true
+-      - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+-      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+-      - ORDERER_ADMIN_TLS_ENABLED=true
+-      - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7053
+-      - ORDERER_OPERATIONS_LISTENADDRESS=orderer.example.com:9443
+-      - ORDERER_METRICS_PROVIDER=prometheus
++    - FABRIC_LOGGING_SPEC=INFO
++    - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
++    - ORDERER_GENERAL_LISTENPORT=7050
++    - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
++    - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
++    - ORDERER_GENERAL_TLS_ENABLED=true
++    - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
++    - ORDERER_CHANNELPARTICIPATION_ENABLED=true
++    - ORDERER_ADMIN_TLS_ENABLED=true
++    - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7053
++    - ORDERER_OPERATIONS_LISTENADDRESS=orderer.example.com:9443
++    - ORDERER_METRICS_PROVIDER=prometheus
++    - ALGORAND_NODE_ID=orderer1
++    - ALGORAND_LISTEN=0.0.0.0:7060
++    - ALGORAND_PEERS=orderer.example.com:7060,orderer2.example.com:7060,orderer3.example.com:7060,orderer4.example.com:7060
++    - ALGORAND_KEY_FILE=/var/hyperledger/keys/orderer1.key
++    - ALGORAND_MEMBERS=${ALGORAND_MEMBERS}
++    - ALGORAND_TELEMETRY_LISTEN=0.0.0.0:7070
++    - ALGORAND_LAMBDA_PRIORITY=${ALGORAND_LAMBDA_PRIORITY:-250ms}
+     working_dir: /root
+     command: orderer
+     volumes:
+-      - ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
+-      - ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/:/var/hyperledger/orderer/tls
+-      - orderer.example.com:/var/hyperledger/production/orderer
++    - ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
++    - ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/:/var/hyperledger/orderer/tls
++    - orderer.example.com:/var/hyperledger/production/orderer
++    - ../../../../algorand-fabric/fabric/scripts/keys:/var/hyperledger/keys
+     ports:
+-      - 7050:7050
+-      - 7053:7053
+-      - 9443:9443
++    - 7050:7050
++    - 7053:7053
++    - 9443:9443
++    - 7070:7070
+     networks:
+-      - test
+-
++    - test
+   orderer2.example.com:
+     container_name: orderer2.example.com
+-    image: hyperledger/fabric-orderer:latest
++    image: ${ORDERER_IMAGE:-hyperledger/fabric-orderer:algorand}
+     labels:
+       service: hyperledger-fabric
+     environment:
+-      - FABRIC_LOGGING_SPEC=INFO
+-      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+-      - ORDERER_GENERAL_LISTENPORT=7052
+-      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+-      - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+-      # enabled TLS
+-      - ORDERER_GENERAL_TLS_ENABLED=true
+-      - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+-      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+-      - ORDERER_ADMIN_TLS_ENABLED=true
+-      - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7055
+-      - ORDERER_OPERATIONS_LISTENADDRESS=orderer2.example.com:9446
+-      - ORDERER_METRICS_PROVIDER=prometheus
++    - FABRIC_LOGGING_SPEC=INFO
++    - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
++    - ORDERER_GENERAL_LISTENPORT=7052
++    - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
++    - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
++    - ORDERER_GENERAL_TLS_ENABLED=true
++    - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
++    - ORDERER_CHANNELPARTICIPATION_ENABLED=true
++    - ORDERER_ADMIN_TLS_ENABLED=true
++    - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7055
++    - ORDERER_OPERATIONS_LISTENADDRESS=orderer2.example.com:9446
++    - ORDERER_METRICS_PROVIDER=prometheus
++    - ALGORAND_NODE_ID=orderer2
++    - ALGORAND_LISTEN=0.0.0.0:7060
++    - ALGORAND_PEERS=orderer.example.com:7060,orderer2.example.com:7060,orderer3.example.com:7060,orderer4.example.com:7060
++    - ALGORAND_KEY_FILE=/var/hyperledger/keys/orderer2.key
++    - ALGORAND_MEMBERS=${ALGORAND_MEMBERS}
++    - ALGORAND_TELEMETRY_LISTEN=0.0.0.0:7070
++    - ALGORAND_LAMBDA_PRIORITY=${ALGORAND_LAMBDA_PRIORITY:-250ms}
+     working_dir: /root
+     command: orderer
+     volumes:
+-      - ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/var/hyperledger/orderer/msp
+-      - ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/:/var/hyperledger/orderer/tls
+-      - orderer2.example.com:/var/hyperledger/production/orderer
++    - ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/var/hyperledger/orderer/msp
++    - ../organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/:/var/hyperledger/orderer/tls
++    - orderer2.example.com:/var/hyperledger/production/orderer
++    - ../../../../algorand-fabric/fabric/scripts/keys:/var/hyperledger/keys
+     ports:
+-      - 7052:7052
+-      - 7055:7055
+-      - 9446:9446
++    - 7052:7052
++    - 7055:7055
++    - 9446:9446
++    - 7071:7070
+     networks:
+-      - test
+-
++    - test
+   orderer3.example.com:
+     container_name: orderer3.example.com
+-    image: hyperledger/fabric-orderer:latest
++    image: ${ORDERER_IMAGE:-hyperledger/fabric-orderer:algorand}
+     labels:
+       service: hyperledger-fabric
+     environment:
+-      - FABRIC_LOGGING_SPEC=INFO
+-      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+-      - ORDERER_GENERAL_LISTENPORT=7056
+-      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+-      - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+-      # enabled TLS
+-      - ORDERER_GENERAL_TLS_ENABLED=true
+-      - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+-      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+-      - ORDERER_ADMIN_TLS_ENABLED=true
+-      - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7057
+-      - ORDERER_OPERATIONS_LISTENADDRESS=orderer3.example.com:9447
+-      - ORDERER_METRICS_PROVIDER=prometheus
++    - FABRIC_LOGGING_SPEC=INFO
++    - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
++    - ORDERER_GENERAL_LISTENPORT=7056
++    - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
++    - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
++    - ORDERER_GENERAL_TLS_ENABLED=true
++    - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
++    - ORDERER_CHANNELPARTICIPATION_ENABLED=true
++    - ORDERER_ADMIN_TLS_ENABLED=true
++    - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7057
++    - ORDERER_OPERATIONS_LISTENADDRESS=orderer3.example.com:9447
++    - ORDERER_METRICS_PROVIDER=prometheus
++    - ALGORAND_NODE_ID=orderer3
++    - ALGORAND_LISTEN=0.0.0.0:7060
++    - ALGORAND_PEERS=orderer.example.com:7060,orderer2.example.com:7060,orderer3.example.com:7060,orderer4.example.com:7060
++    - ALGORAND_KEY_FILE=/var/hyperledger/keys/orderer3.key
++    - ALGORAND_MEMBERS=${ALGORAND_MEMBERS}
++    - ALGORAND_TELEMETRY_LISTEN=0.0.0.0:7070
++    - ALGORAND_LAMBDA_PRIORITY=${ALGORAND_LAMBDA_PRIORITY:-250ms}
+     working_dir: /root
+     command: orderer
+     volumes:
+-      - ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
+-      - ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/:/var/hyperledger/orderer/tls
+-      - orderer3.example.com:/var/hyperledger/production/orderer
++    - ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
++    - ../organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/:/var/hyperledger/orderer/tls
++    - orderer3.example.com:/var/hyperledger/production/orderer
++    - ../../../../algorand-fabric/fabric/scripts/keys:/var/hyperledger/keys
+     ports:
+-      - 7056:7056
+-      - 7057:7057
+-      - 9447:9447
++    - 7056:7056
++    - 7057:7057
++    - 9447:9447
++    - 7072:7070
+     networks:
+-      - test
+-
++    - test
+   orderer4.example.com:
+     container_name: orderer4.example.com
+-    image: hyperledger/fabric-orderer:latest
++    image: ${ORDERER_IMAGE:-hyperledger/fabric-orderer:algorand}
+     labels:
+       service: hyperledger-fabric
+     environment:
+-      - FABRIC_LOGGING_SPEC=INFO
+-      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+-      - ORDERER_GENERAL_LISTENPORT=7058
+-      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+-      - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+-      # enabled TLS
+-      - ORDERER_GENERAL_TLS_ENABLED=true
+-      - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+-      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+-      - ORDERER_ADMIN_TLS_ENABLED=true
+-      - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+-      - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+-      - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+-      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7059
+-      - ORDERER_OPERATIONS_LISTENADDRESS=orderer4.example.com:9448
+-      - ORDERER_METRICS_PROVIDER=prometheus
++    - FABRIC_LOGGING_SPEC=INFO
++    - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
++    - ORDERER_GENERAL_LISTENPORT=7058
++    - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
++    - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
++    - ORDERER_GENERAL_TLS_ENABLED=true
++    - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
++    - ORDERER_CHANNELPARTICIPATION_ENABLED=true
++    - ORDERER_ADMIN_TLS_ENABLED=true
++    - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
++    - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
++    - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
++    - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7059
++    - ORDERER_OPERATIONS_LISTENADDRESS=orderer4.example.com:9448
++    - ORDERER_METRICS_PROVIDER=prometheus
++    - ALGORAND_NODE_ID=orderer4
++    - ALGORAND_LISTEN=0.0.0.0:7060
++    - ALGORAND_PEERS=orderer.example.com:7060,orderer2.example.com:7060,orderer3.example.com:7060,orderer4.example.com:7060
++    - ALGORAND_KEY_FILE=/var/hyperledger/keys/orderer4.key
++    - ALGORAND_MEMBERS=${ALGORAND_MEMBERS}
++    - ALGORAND_TELEMETRY_LISTEN=0.0.0.0:7070
++    - ALGORAND_LAMBDA_PRIORITY=${ALGORAND_LAMBDA_PRIORITY:-250ms}
+     working_dir: /root
+     command: orderer
+     volumes:
+-      - ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/msp:/var/hyperledger/orderer/msp
+-      - ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/:/var/hyperledger/orderer/tls
+-      - orderer4.example.com:/var/hyperledger/production/orderer
++    - ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/msp:/var/hyperledger/orderer/msp
++    - ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/:/var/hyperledger/orderer/tls
++    - orderer4.example.com:/var/hyperledger/production/orderer
++    - ../../../../algorand-fabric/fabric/scripts/keys:/var/hyperledger/keys
+     ports:
+-      - 7058:7058
+-      - 7059:7059
+-      - 9448:9448
++    - 7058:7058
++    - 7059:7059
++    - 9448:9448
++    - 7073:7070
+     networks:
+-      - test
+-
+-
+-
+-
++    - test
+   peer0.org1.example.com:
+     container_name: peer0.org1.example.com
+     image: hyperledger/fabric-peer:latest
+     labels:
+       service: hyperledger-fabric
+     environment:
+-      - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
+-      - FABRIC_LOGGING_SPEC=INFO
+-      #- FABRIC_LOGGING_SPEC=DEBUG
+-      - CORE_PEER_TLS_ENABLED=true
+-      - CORE_PEER_PROFILE_ENABLED=false
+-      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+-      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+-      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+-      # Peer specific variables
+-      - CORE_PEER_ID=peer0.org1.example.com
+-      - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
+-      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+-      - CORE_PEER_CHAINCODEADDRESS=peer0.org1.example.com:7052
+-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.example.com:7051
+-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org1.example.com:7051
+-      - CORE_PEER_LOCALMSPID=Org1MSP
+-      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
+-      - CORE_OPERATIONS_LISTENADDRESS=peer0.org1.example.com:9444
+-      - CORE_METRICS_PROVIDER=prometheus
+-      - CHAINCODE_AS_A_SERVICE_BUILDER_CONFIG={"peername":"peer0org1"}
+-      - CORE_CHAINCODE_EXECUTETIMEOUT=300s
++    - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
++    - FABRIC_LOGGING_SPEC=INFO
++    - CORE_PEER_TLS_ENABLED=true
++    - CORE_PEER_PROFILE_ENABLED=false
++    - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
++    - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
++    - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
++    - CORE_PEER_ID=peer0.org1.example.com
++    - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
++    - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
++    - CORE_PEER_CHAINCODEADDRESS=peer0.org1.example.com:7052
++    - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
++    - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.example.com:7051
++    - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org1.example.com:7051
++    - CORE_PEER_LOCALMSPID=Org1MSP
++    - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
++    - CORE_OPERATIONS_LISTENADDRESS=peer0.org1.example.com:9444
++    - CORE_METRICS_PROVIDER=prometheus
++    - CHAINCODE_AS_A_SERVICE_BUILDER_CONFIG={"peername":"peer0org1"}
++    - CORE_CHAINCODE_EXECUTETIMEOUT=300s
+     volumes:
+-      - ../organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com:/etc/hyperledger/fabric
+-      - peer0.org1.example.com:/var/hyperledger/production
++    - ../organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com:/etc/hyperledger/fabric
++    - peer0.org1.example.com:/var/hyperledger/production
+     working_dir: /root
+     command: peer node start
+     ports:
+-      - 7051:7051
+-      - 9444:9444
++    - 7051:7051
++    - 9444:9444
+     networks:
+-      - test
+-
++    - test
+   peer0.org2.example.com:
+     container_name: peer0.org2.example.com
+     image: hyperledger/fabric-peer:latest
+     labels:
+       service: hyperledger-fabric
+     environment:
+-      - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
+-      - FABRIC_LOGGING_SPEC=INFO
+-      #- FABRIC_LOGGING_SPEC=DEBUG
+-      - CORE_PEER_TLS_ENABLED=true
+-      - CORE_PEER_PROFILE_ENABLED=false
+-      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+-      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+-      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+-      # Peer specific variables
+-      - CORE_PEER_ID=peer0.org2.example.com
+-      - CORE_PEER_ADDRESS=peer0.org2.example.com:9051
+-      - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
+-      - CORE_PEER_CHAINCODEADDRESS=peer0.org2.example.com:9052
+-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
+-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.example.com:9051
+-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org2.example.com:9051
+-      - CORE_PEER_LOCALMSPID=Org2MSP
+-      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
+-      - CORE_OPERATIONS_LISTENADDRESS=peer0.org2.example.com:9445
+-      - CORE_METRICS_PROVIDER=prometheus
+-      - CHAINCODE_AS_A_SERVICE_BUILDER_CONFIG={"peername":"peer0org2"}
+-      - CORE_CHAINCODE_EXECUTETIMEOUT=300s
++    - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
++    - FABRIC_LOGGING_SPEC=INFO
++    - CORE_PEER_TLS_ENABLED=true
++    - CORE_PEER_PROFILE_ENABLED=false
++    - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
++    - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
++    - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
++    - CORE_PEER_ID=peer0.org2.example.com
++    - CORE_PEER_ADDRESS=peer0.org2.example.com:9051
++    - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
++    - CORE_PEER_CHAINCODEADDRESS=peer0.org2.example.com:9052
++    - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
++    - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.example.com:9051
++    - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org2.example.com:9051
++    - CORE_PEER_LOCALMSPID=Org2MSP
++    - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
++    - CORE_OPERATIONS_LISTENADDRESS=peer0.org2.example.com:9445
++    - CORE_METRICS_PROVIDER=prometheus
++    - CHAINCODE_AS_A_SERVICE_BUILDER_CONFIG={"peername":"peer0org2"}
++    - CORE_CHAINCODE_EXECUTETIMEOUT=300s
+     volumes:
+-      - ../organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com:/etc/hyperledger/fabric
+-      - peer0.org2.example.com:/var/hyperledger/production
++    - ../organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com:/etc/hyperledger/fabric
++    - peer0.org2.example.com:/var/hyperledger/production
+     working_dir: /root
+     command: peer node start
+     ports:
+-      - 9051:9051
+-      - 9445:9445
++    - 9051:9051
++    - 9445:9445
+     networks:
+-      - test
++    - test
+diff --git test-network/configtx/configtx.yaml test-network-algorand/configtx/configtx.yaml
+index 6f783e2..84167e7 100644
+--- test-network/configtx/configtx.yaml
++++ test-network-algorand/configtx/configtx.yaml
+@@ -277,3 +277,28 @@ Profiles:
+         - *Org1
+         - *Org2
+       Capabilities: *ApplicationCapabilities
++
++  ChannelUsingRaftBatch500:
++    <<: *ChannelDefaults
++    Orderer:
++      <<: *OrdererDefaults
++      BatchSize:
++        MaxMessageCount: 500
++        AbsoluteMaxBytes: 99 MB
++        PreferredMaxBytes: 2 MB
++      OrdererType: etcdraft
++      EtcdRaft:
++        Consenters:
++          - Host: orderer.example.com
++            Port: 7050
++            ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
++            ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
++      Organizations:
++        - *OrdererOrg
++      Capabilities: *OrdererCapabilities
++    Application:
++      <<: *ApplicationDefaults
++      Organizations:
++        - *Org1
++        - *Org2
++      Capabilities: *ApplicationCapabilities
+diff --git test-network/scripts/createChannel.sh test-network-algorand/scripts/createChannel.sh
+index af31fee..27734f8 100755
+--- test-network/scripts/createChannel.sh
++++ test-network-algorand/scripts/createChannel.sh
+@@ -36,9 +36,14 @@ createChannelGenesisBlock() {
+ 	set -x
+ 
+ 	if [ $bft_true -eq 1 ]; then
+-		configtxgen -profile ChannelUsingBFT -outputBlock ./channel-artifacts/${CHANNEL_NAME}.block -channelID $CHANNEL_NAME
++		PROFILE="ChannelUsingBFT"
++		if [ -n "$BATCH500" ]; then PROFILE="ChannelUsingBFTBatch500"; fi
++		if [ -n "$RAFT4" ]; then PROFILE="ChannelUsingRaft4Batch500"; fi
++		configtxgen -profile $PROFILE -outputBlock ./channel-artifacts/${CHANNEL_NAME}.block -channelID $CHANNEL_NAME
+ 	else
+-		configtxgen -profile ChannelUsingRaft -outputBlock ./channel-artifacts/${CHANNEL_NAME}.block -channelID $CHANNEL_NAME
++		PROFILE="ChannelUsingRaft"
++		if [ -n "$BATCH500" ]; then PROFILE="ChannelUsingRaftBatch500"; fi
++		configtxgen -profile $PROFILE -outputBlock ./channel-artifacts/${CHANNEL_NAME}.block -channelID $CHANNEL_NAME
+ 	fi
+ 	res=$?
+ 	{ set +x; } 2>/dev/null
+@@ -121,6 +126,7 @@ joinChannel 2
+ ## Set the anchor peers for each org in the channel
+ infoln "Setting anchor peer for org1..."
+ setAnchorPeer 1
++sleep 10
+ infoln "Setting anchor peer for org2..."
+ setAnchorPeer 2
+ 
