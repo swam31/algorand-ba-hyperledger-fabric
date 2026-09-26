@@ -1,0 +1,906 @@
+[
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "fast-start only (no tx sharing)",
+    "scale": "1000",
+    "concurrency": 25,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 218.807,
+    "e2eTps": 4.570237698062677,
+    "ordTps": 4.570237698062677,
+    "blocks": 181,
+    "txPerBlock": 5.524861878453039,
+    "rounds": 181,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      190,
+      190,
+      190,
+      190
+    ],
+    "p50": 4278,
+    "p95": 13053,
+    "stalls": 0,
+    "timestamp": "2026-09-25T13:49:36.571Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "tx-sharing, lambda_priority 1s",
+    "scale": "1000",
+    "concurrency": 25,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 138.341,
+    "e2eTps": 7.228515046154068,
+    "ordTps": 7.229037598224549,
+    "blocks": 109,
+    "txPerBlock": 9.174311926605505,
+    "rounds": 109,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      118,
+      118,
+      118,
+      118
+    ],
+    "p50": 3170,
+    "p95": 8089,
+    "stalls": 0,
+    "timestamp": "2026-09-25T14:02:53.181Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "tx-sharing + 250ms, full-block proposals",
+    "scale": "1000",
+    "concurrency": 25,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 37.465,
+    "e2eTps": 26.691578806886426,
+    "ordTps": 26.691578806886426,
+    "blocks": 108,
+    "txPerBlock": 9.25925925925926,
+    "rounds": 108,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      245,
+      245,
+      245,
+      245
+    ],
+    "p50": 889,
+    "p95": 1510,
+    "stalls": 0,
+    "timestamp": "2026-09-25T14:12:25.424Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "tx-sharing + 250ms, full-block proposals",
+    "scale": "1000",
+    "concurrency": 500,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 30.395,
+    "e2eTps": 32.90014805066623,
+    "ordTps": 32.90014805066623,
+    "blocks": 23,
+    "txPerBlock": 43.47826086956522,
+    "rounds": 24,
+    "emptyRounds": 1,
+    "tentativeRounds": 0,
+    "wastedPct": 4.166666666666667,
+    "ordererHeights": [
+      268,
+      268,
+      268,
+      268
+    ],
+    "p50": 11852,
+    "p95": 21539,
+    "stalls": 0,
+    "timestamp": "2026-09-25T14:13:02.769Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "tx-sharing + 250ms, full-block proposals",
+    "scale": "10000",
+    "concurrency": 500,
+    "submitted": 10000,
+    "totalTxs": 10000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 106.74,
+    "e2eTps": 93.68559115608019,
+    "ordTps": 93.68559115608019,
+    "blocks": 161,
+    "txPerBlock": 62.11180124223603,
+    "rounds": 164,
+    "emptyRounds": 3,
+    "tentativeRounds": 0,
+    "wastedPct": 1.829268292682927,
+    "ordererHeights": [
+      429,
+      429,
+      429,
+      429
+    ],
+    "p50": 4361,
+    "p95": 15147,
+    "stalls": 0,
+    "timestamp": "2026-09-25T14:14:55.220Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "compact proposals (before priority queues and catch-up)",
+    "scale": "1000",
+    "concurrency": 25,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 30.098,
+    "e2eTps": 33.22479898996611,
+    "ordTps": 33.22590291391168,
+    "blocks": 103,
+    "txPerBlock": 9.70873786407767,
+    "rounds": 103,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      249,
+      249,
+      249,
+      249
+    ],
+    "p50": 834,
+    "p95": 937,
+    "stalls": 0,
+    "timestamp": "2026-09-25T14:22:41.352Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "compact proposals (before priority queues and catch-up)",
+    "scale": "1000",
+    "concurrency": 500,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 7.523,
+    "e2eTps": 132.92569453675395,
+    "ordTps": 132.92569453675395,
+    "blocks": 17,
+    "txPerBlock": 58.8235294117647,
+    "rounds": 17,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      266,
+      266,
+      266,
+      266
+    ],
+    "p50": 3249,
+    "p95": 5018,
+    "stalls": 0,
+    "timestamp": "2026-09-25T14:22:54.717Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "compact proposals (before priority queues and catch-up)",
+    "scale": "10000",
+    "concurrency": 500,
+    "submitted": 10000,
+    "totalTxs": 10000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 76.71,
+    "e2eTps": 130.3611002476861,
+    "ordTps": 130.36279967148573,
+    "blocks": 173,
+    "txPerBlock": 57.80346820809248,
+    "rounds": 173,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      439,
+      439,
+      439,
+      439
+    ],
+    "p50": 3195,
+    "p95": 7541,
+    "stalls": 0,
+    "timestamp": "2026-09-25T14:24:16.791Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "compact proposals (before priority queues and catch-up)",
+    "scale": "100000",
+    "concurrency": 500,
+    "submitted": 100000,
+    "totalTxs": 100000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 811.318,
+    "e2eTps": 123.25623245139391,
+    "ordTps": 123.25638437256954,
+    "blocks": 1666,
+    "txPerBlock": 60.024009603841534,
+    "rounds": 1671,
+    "emptyRounds": 5,
+    "tentativeRounds": 0,
+    "wastedPct": 0.2992220227408737,
+    "ordererHeights": [
+      2105,
+      2105,
+      2105,
+      2105
+    ],
+    "p50": 3722,
+    "p95": 6601,
+    "stalls": 0,
+    "timestamp": "2026-09-25T14:37:53.596Z"
+  },
+  {
+    "workload": "payments",
+    "consensus": "algorand",
+    "build": "compact proposals (before priority queues and catch-up)",
+    "scale": "1000",
+    "concurrency": 500,
+    "accounts": 1000,
+    "badFraction": 0.06,
+    "retries": 5,
+    "attempts": 2008,
+    "submitted": 1000,
+    "totalTxs": 934,
+    "invalid": 25,
+    "errors": 41,
+    "complete": true,
+    "durationSec": 21.782,
+    "e2eTps": 42.87944174088697,
+    "ordTps": 42.87944174088697,
+    "blocks": 45,
+    "txPerBlock": 21.31111111111111,
+    "rounds": 45,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      2160,
+      2160,
+      2160,
+      2160
+    ],
+    "p50": 7615,
+    "p95": 18899,
+    "kinds": {
+      "forged": {
+        "sent": 17,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 17,
+        "reasons": {
+          "refused: access denied: channel [mychannel] creator org [Org1MSP]": 17
+        }
+      },
+      "theft": {
+        "sent": 12,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 12,
+        "reasons": {
+          "refused: not your account: acct belongs to another identity": 12
+        }
+      },
+      "overdraft": {
+        "sent": 9,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 9,
+        "reasons": {
+          "refused: insufficient funds": 9
+        }
+      },
+      "normal": {
+        "sent": 934,
+        "committed": 926,
+        "invalid": 5,
+        "refused": 3,
+        "reasons": {
+          "refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match": 3,
+          "invalid: MVCC_READ_CONFLICT": 5
+        }
+      },
+      "double-spend": {
+        "sent": 28,
+        "committed": 8,
+        "invalid": 20,
+        "refused": 0,
+        "reasons": {
+          "invalid: MVCC_READ_CONFLICT": 20
+        }
+      }
+    },
+    "doubleSpendsBothCommitted": 0,
+    "audit": {
+      "issued": 1000000,
+      "supplyNow": 1000000,
+      "supplyConserved": true,
+      "accountsChecked": 1000,
+      "balanceMismatches": 0,
+      "negativeBalances": 0,
+      "passed": true
+    },
+    "stalls": 0,
+    "timestamp": "2026-09-25T14:38:28.447Z"
+  },
+  {
+    "workload": "payments",
+    "consensus": "algorand",
+    "build": "compact proposals (before priority queues and catch-up)",
+    "scale": "10000",
+    "concurrency": 500,
+    "accounts": 1000,
+    "badFraction": 0.06,
+    "retries": 5,
+    "attempts": 24380,
+    "submitted": 10000,
+    "totalTxs": 8657,
+    "invalid": 433,
+    "errors": 910,
+    "complete": true,
+    "durationSec": 220.349,
+    "e2eTps": 39.28767546029254,
+    "ordTps": 39.28838866323266,
+    "blocks": 433,
+    "txPerBlock": 20.993071593533486,
+    "rounds": 434,
+    "emptyRounds": 1,
+    "tentativeRounds": 0,
+    "wastedPct": 0.2304147465437788,
+    "ordererHeights": [
+      2593,
+      2593,
+      2593,
+      2593
+    ],
+    "p50": 8921,
+    "p95": 24241,
+    "kinds": {
+      "forged": {
+        "sent": 150,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 150,
+        "reasons": {
+          "refused: access denied: channel [mychannel] creator org [Org1MSP]": 150
+        }
+      },
+      "theft": {
+        "sent": 139,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 139,
+        "reasons": {
+          "refused: not your account: acct belongs to another identity": 139
+        }
+      },
+      "overdraft": {
+        "sent": 154,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 154,
+        "reasons": {
+          "refused: insufficient funds": 154
+        }
+      },
+      "normal": {
+        "sent": 9273,
+        "committed": 8583,
+        "invalid": 301,
+        "refused": 389,
+        "reasons": {
+          "refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match": 388,
+          "invalid: MVCC_READ_CONFLICT": 301,
+          "refused: insufficient funds": 1
+        }
+      },
+      "double-spend": {
+        "sent": 284,
+        "committed": 74,
+        "invalid": 132,
+        "refused": 78,
+        "reasons": {
+          "invalid: MVCC_READ_CONFLICT": 132,
+          "refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match": 78
+        }
+      }
+    },
+    "doubleSpendsBothCommitted": 0,
+    "audit": {
+      "issued": 1000000,
+      "supplyNow": 1000000,
+      "supplyConserved": true,
+      "accountsChecked": 1000,
+      "balanceMismatches": 0,
+      "negativeBalances": 0,
+      "passed": true
+    },
+    "stalls": 0,
+    "timestamp": "2026-09-25T14:42:14.946Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "final with 5 s TCP user timeout (superseded)",
+    "scale": "1000",
+    "concurrency": 25,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 35.701,
+    "e2eTps": 28.010419876193943,
+    "ordTps": 28.010419876193943,
+    "blocks": 106,
+    "txPerBlock": 9.433962264150944,
+    "rounds": 106,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      1049,
+      1049,
+      1049,
+      1049
+    ],
+    "p50": 864,
+    "p95": 1564,
+    "stalls": 0,
+    "timestamp": "2026-09-25T16:41:15.860Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "final with 5 s TCP user timeout (superseded)",
+    "scale": "1000",
+    "concurrency": 500,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 11.746,
+    "e2eTps": 85.13536523071684,
+    "ordTps": 85.13536523071684,
+    "blocks": 21,
+    "txPerBlock": 47.61904761904762,
+    "rounds": 21,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      1070,
+      1070,
+      1070,
+      1070
+    ],
+    "p50": 5195,
+    "p95": 5714,
+    "stalls": 0,
+    "timestamp": "2026-09-25T16:41:33.641Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "final with 5 s TCP user timeout (superseded)",
+    "scale": "10000",
+    "concurrency": 500,
+    "submitted": 10000,
+    "totalTxs": 10000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 89.117,
+    "e2eTps": 112.21203586296666,
+    "ordTps": 112.21203586296666,
+    "blocks": 167,
+    "txPerBlock": 59.880239520958085,
+    "rounds": 168,
+    "emptyRounds": 1,
+    "tentativeRounds": 0,
+    "wastedPct": 0.5952380952380952,
+    "ordererHeights": [
+      1237,
+      1237,
+      1237,
+      1237
+    ],
+    "p50": 3813,
+    "p95": 8842,
+    "stalls": 0,
+    "timestamp": "2026-09-25T16:43:08.191Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "final with 5 s TCP user timeout (superseded)",
+    "scale": "100000",
+    "concurrency": 500,
+    "submitted": 99999,
+    "totalTxs": 99999,
+    "invalid": 0,
+    "errors": 1,
+    "complete": false,
+    "durationSec": 1056.142,
+    "e2eTps": 94.68329069386502,
+    "ordTps": 94.68329069386502,
+    "blocks": 1795,
+    "txPerBlock": 55.70974930362117,
+    "rounds": 1807,
+    "emptyRounds": 12,
+    "tentativeRounds": 0,
+    "wastedPct": 0.6640841173215274,
+    "ordererHeights": [
+      3032,
+      3032,
+      3032,
+      3032
+    ],
+    "p50": 4754,
+    "p95": 10116,
+    "stalls": 0,
+    "timestamp": "2026-09-25T17:00:49.830Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "final (first run, before the Raft comparison)",
+    "scale": "1000",
+    "concurrency": 25,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 34.23,
+    "e2eTps": 29.214139643587497,
+    "ordTps": 29.214993134476615,
+    "blocks": 108,
+    "txPerBlock": 9.25925925925926,
+    "rounds": 108,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "p50": 872,
+    "p95": 1291,
+    "stalls": 0,
+    "timestamp": "2026-09-25T17:10:48.072Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "final (first run, before the Raft comparison)",
+    "scale": "1000",
+    "concurrency": 500,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 10.627,
+    "e2eTps": 94.09993413004611,
+    "ordTps": 94.10878976096367,
+    "blocks": 20,
+    "txPerBlock": 50,
+    "rounds": 20,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      275,
+      275,
+      275,
+      275
+    ],
+    "p50": 4573,
+    "p95": 5736,
+    "stalls": 0,
+    "timestamp": "2026-09-25T17:11:04.124Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "final (first run, before the Raft comparison)",
+    "scale": "10000",
+    "concurrency": 500,
+    "submitted": 10000,
+    "totalTxs": 10000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 84.424,
+    "e2eTps": 118.44972993461575,
+    "ordTps": 118.45253606879724,
+    "blocks": 177,
+    "txPerBlock": 56.49717514124294,
+    "rounds": 177,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      452,
+      452,
+      452,
+      452
+    ],
+    "p50": 3995,
+    "p95": 6157,
+    "stalls": 0,
+    "timestamp": "2026-09-25T17:12:33.938Z"
+  },
+  {
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "final (first run, before the Raft comparison)",
+    "scale": "100000",
+    "concurrency": 500,
+    "submitted": 100000,
+    "totalTxs": 100000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 1356.538,
+    "e2eTps": 73.7170650582586,
+    "ordTps": 73.71711940035546,
+    "blocks": 1951,
+    "txPerBlock": 51.255766273705795,
+    "rounds": 1973,
+    "emptyRounds": 22,
+    "tentativeRounds": 0,
+    "wastedPct": 1.1150532184490622,
+    "ordererHeights": [
+      2403,
+      2403,
+      2403,
+      2403
+    ],
+    "p50": 5792,
+    "p95": 13635,
+    "stalls": 0,
+    "timestamp": "2026-09-25T17:35:16.284Z"
+  },
+  {
+    "workload": "payments",
+    "consensus": "algorand",
+    "build": "final (first run, before the Raft comparison)",
+    "scale": "1000",
+    "concurrency": 500,
+    "accounts": 1000,
+    "badFraction": 0.06,
+    "retries": 5,
+    "attempts": 2132,
+    "submitted": 1000,
+    "totalTxs": 911,
+    "invalid": 36,
+    "errors": 53,
+    "complete": true,
+    "durationSec": 21.115,
+    "e2eTps": 43.14468387402321,
+    "ordTps": 43.14468387402321,
+    "blocks": 46,
+    "txPerBlock": 20.58695652173913,
+    "rounds": 46,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      2459,
+      2459,
+      2459,
+      2459
+    ],
+    "p50": 7630,
+    "p95": 18827,
+    "kinds": {
+      "forged": {
+        "sent": 22,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 22,
+        "reasons": {
+          "refused: access denied: channel [mychannel] creator org [Org1MSP]": 22
+        }
+      },
+      "theft": {
+        "sent": 12,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 12,
+        "reasons": {
+          "refused: not your account: acct belongs to another identity": 12
+        }
+      },
+      "overdraft": {
+        "sent": 17,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 17,
+        "reasons": {
+          "refused: insufficient funds": 17
+        }
+      },
+      "normal": {
+        "sent": 909,
+        "committed": 898,
+        "invalid": 11,
+        "refused": 0,
+        "reasons": {
+          "invalid: MVCC_READ_CONFLICT": 11
+        }
+      },
+      "double-spend": {
+        "sent": 40,
+        "committed": 13,
+        "invalid": 25,
+        "refused": 2,
+        "reasons": {
+          "invalid: MVCC_READ_CONFLICT": 25,
+          "refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match": 2
+        }
+      }
+    },
+    "doubleSpendsBothCommitted": 0,
+    "audit": {
+      "issued": 1000000,
+      "supplyNow": 1000000,
+      "supplyConserved": true,
+      "accountsChecked": 1000,
+      "balanceMismatches": 0,
+      "negativeBalances": 0,
+      "passed": true
+    },
+    "stalls": 0,
+    "timestamp": "2026-09-25T17:35:50.477Z"
+  },
+  {
+    "workload": "payments",
+    "consensus": "algorand",
+    "build": "final (first run, before the Raft comparison)",
+    "scale": "10000",
+    "concurrency": 500,
+    "accounts": 1000,
+    "badFraction": 0.06,
+    "retries": 5,
+    "attempts": 22774,
+    "submitted": 10000,
+    "totalTxs": 8788,
+    "invalid": 540,
+    "errors": 672,
+    "complete": true,
+    "durationSec": 239.714,
+    "e2eTps": 36.66035358802573,
+    "ordTps": 36.661271213309526,
+    "blocks": 414,
+    "txPerBlock": 22.531400966183575,
+    "rounds": 417,
+    "emptyRounds": 3,
+    "tentativeRounds": 0,
+    "wastedPct": 0.7194244604316546,
+    "ordererHeights": [
+      2873,
+      2873,
+      2873,
+      2873
+    ],
+    "p50": 9230,
+    "p95": 29311,
+    "kinds": {
+      "forged": {
+        "sent": 179,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 179,
+        "reasons": {
+          "refused: access denied: channel [mychannel] creator org [Org1MSP]": 179
+        }
+      },
+      "theft": {
+        "sent": 146,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 146,
+        "reasons": {
+          "refused: not your account: acct belongs to another identity": 146
+        }
+      },
+      "overdraft": {
+        "sent": 169,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 169,
+        "reasons": {
+          "refused: insufficient funds": 169
+        }
+      },
+      "double-spend": {
+        "sent": 334,
+        "committed": 81,
+        "invalid": 198,
+        "refused": 55,
+        "reasons": {
+          "invalid: MVCC_READ_CONFLICT": 198,
+          "refused: insufficient funds": 1,
+          "refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match": 54
+        }
+      },
+      "normal": {
+        "sent": 9172,
+        "committed": 8707,
+        "invalid": 342,
+        "refused": 123,
+        "reasons": {
+          "refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match": 120,
+          "invalid: MVCC_READ_CONFLICT": 342,
+          "refused: insufficient funds": 3
+        }
+      }
+    },
+    "doubleSpendsBothCommitted": 0,
+    "audit": {
+      "issued": 1000000,
+      "supplyNow": 1000000,
+      "supplyConserved": true,
+      "accountsChecked": 1000,
+      "balanceMismatches": 0,
+      "negativeBalances": 0,
+      "passed": true
+    },
+    "stalls": 0,
+    "timestamp": "2026-09-25T17:39:56.105Z"
+  }
+]

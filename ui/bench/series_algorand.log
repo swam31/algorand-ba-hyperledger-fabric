@@ -1,0 +1,183 @@
+algorand: stopping orderer2 at t=20s, restarting at t=40s
+  t=20s docker stop orderer2
+  t=40s docker start orderer2
+  committed 1104; 0 transactions failed or timed out (0 after the crash); longest gap in commits after the crash 1.14 s
+  commits per second: 0 2 21 20 3 21 21 6 20 21 21 21 23 25 25 39 20 11 22 23 9 12 20 20 14 20 6 14 9 18 11 18 22 23 20 20 25 20 24 32 0 22 25 15 16 8 6 20 12 13 23 21 26 25 21 20 20 18 21 30
+  orderer heights 15 s after the run: 162/162/162/162
+Starting benchmark on algorand: 1000 txs, concurrency 25, timeout 300s
+  t=10s submitted=320 committed=295 invalid=0 errors=0
+  t=20s submitted=633 committed=608 invalid=0 errors=0
+  t=30s submitted=918 committed=893 invalid=0 errors=0
+Finished in 33.8s: committed 1000/1000, invalid 0, errors 0
+  e2e 29.6 tps | 105 blocks (10 tx/block) | 105 BA* rounds, 0 empty (0.0% wasted) | p50 860ms p95 1162ms
+  orderer heights after run: [267,267,267,267]
+Starting benchmark on algorand: 1000 txs, concurrency 500, timeout 300s
+  t=10s submitted=1000 committed=805 invalid=0 errors=0
+Finished in 10.5s: committed 1000/1000, invalid 0, errors 0
+  e2e 95.5 tps | 17 blocks (59 tx/block) | 17 BA* rounds, 0 empty (0.0% wasted) | p50 4514ms p95 7851ms
+  orderer heights after run: [284,284,284,284]
+Starting benchmark on algorand: 10000 txs, concurrency 500, timeout 300s
+  t=10s submitted=1042 committed=734 invalid=0 errors=0
+  t=20s submitted=2375 committed=1875 invalid=0 errors=0
+  t=30s submitted=2974 committed=2874 invalid=0 errors=0
+  t=40s submitted=4475 committed=4277 invalid=0 errors=0
+  t=50s submitted=5791 committed=5680 invalid=0 errors=0
+  t=60s submitted=7209 committed=7074 invalid=0 errors=0
+  t=70s submitted=8512 committed=8281 invalid=0 errors=0
+  t=80s submitted=10000 committed=9879 invalid=0 errors=0
+Finished in 80.7s: committed 10000/10000, invalid 0, errors 0
+  e2e 123.9 tps | 162 blocks (62 tx/block) | 163 BA* rounds, 1 empty (0.6% wasted) | p50 3559ms p95 8398ms
+  orderer heights after run: [446,446,446,446]
+Starting benchmark on algorand: 100000 txs, concurrency 500, timeout 2000s
+  t=10s submitted=1033 committed=1025 invalid=0 errors=0
+  t=20s submitted=2247 committed=2081 invalid=0 errors=0
+  t=31s submitted=3339 committed=3122 invalid=0 errors=0
+  t=41s submitted=4339 committed=4043 invalid=0 errors=0
+  t=51s submitted=5470 committed=5248 invalid=0 errors=0
+  t=61s submitted=6868 committed=6368 invalid=0 errors=0
+  t=71s submitted=6936 committed=6868 invalid=0 errors=0
+  t=81s submitted=7955 committed=7648 invalid=0 errors=0
+  t=91s submitted=8316 committed=8309 invalid=0 errors=0
+  t=101s submitted=9881 committed=9648 invalid=0 errors=0
+  t=111s submitted=10157 committed=10150 invalid=0 errors=0
+  t=121s submitted=11518 committed=11325 invalid=0 errors=0
+  t=131s submitted=13247 committed=13007 invalid=0 errors=0
+  t=141s submitted=14444 committed=14144 invalid=0 errors=0
+  t=151s submitted=15659 committed=15617 invalid=0 errors=0
+  t=161s submitted=16999 committed=16982 invalid=0 errors=0
+  t=171s submitted=18272 committed=18027 invalid=0 errors=0
+  t=181s submitted=19347 committed=18947 invalid=0 errors=0
+  t=191s submitted=20514 committed=20272 invalid=0 errors=0
+  t=201s submitted=21684 committed=21675 invalid=0 errors=0
+  t=212s submitted=22711 committed=22652 invalid=0 errors=0
+  t=222s submitted=23774 committed=23435 invalid=0 errors=0
+  t=232s submitted=24798 committed=24479 invalid=0 errors=0
+  t=242s submitted=25298 committed=25013 invalid=0 errors=0
+  t=256s submitted=25351 committed=25013 invalid=0 errors=0
+  t=267s submitted=25353 committed=25015 invalid=0 errors=0
+  t=277s submitted=25353 committed=25135 invalid=0 errors=0
+  t=287s submitted=25886 committed=25755 invalid=0 errors=0
+  t=297s submitted=26492 committed=26317 invalid=0 errors=0
+  t=307s submitted=27371 committed=26871 invalid=0 errors=0
+  t=317s submitted=27411 committed=27411 invalid=0 errors=0
+  t=327s submitted=27889 committed=27672 invalid=0 errors=0
+  t=337s submitted=28804 committed=28428 invalid=0 errors=0
+  t=347s submitted=28928 committed=28928 invalid=0 errors=0
+  t=357s submitted=30074 committed=29690 invalid=0 errors=0
+  t=367s submitted=31037 committed=30709 invalid=0 errors=0
+  t=377s submitted=31739 committed=31239 invalid=0 errors=0
+  t=387s submitted=32324 committed=32127 invalid=0 errors=0
+  t=397s submitted=33133 committed=32836 invalid=0 errors=0
+  t=407s submitted=33941 committed=33712 invalid=0 errors=0
+  t=418s submitted=35166 committed=34812 invalid=0 errors=0
+  t=428s submitted=36497 committed=35997 invalid=0 errors=0
+  t=438s submitted=37066 committed=37026 invalid=0 errors=0
+  t=448s submitted=38319 committed=38071 invalid=0 errors=0
+  t=458s submitted=39689 committed=39504 invalid=0 errors=0
+  t=468s submitted=41088 committed=40869 invalid=0 errors=0
+  t=478s submitted=42263 committed=42133 invalid=0 errors=0
+  t=488s submitted=43573 committed=43375 invalid=0 errors=0
+  t=498s submitted=44677 committed=44554 invalid=0 errors=0
+  t=508s submitted=45836 committed=45731 invalid=0 errors=0
+  t=518s submitted=47238 committed=46933 invalid=0 errors=0
+  t=528s submitted=48686 committed=48515 invalid=0 errors=0
+  t=538s submitted=49761 committed=49455 invalid=0 errors=0
+  t=548s submitted=51205 committed=50978 invalid=0 errors=0
+  t=558s submitted=52488 committed=52329 invalid=0 errors=0
+  t=568s submitted=53682 committed=53410 invalid=0 errors=0
+  t=578s submitted=54910 committed=54756 invalid=0 errors=0
+  t=588s submitted=55688 committed=55396 invalid=0 errors=0
+  t=598s submitted=56851 committed=56733 invalid=0 errors=0
+  t=609s submitted=57955 committed=57780 invalid=0 errors=0
+  t=619s submitted=58978 committed=58772 invalid=0 errors=0
+  t=629s submitted=59979 committed=59595 invalid=0 errors=0
+  t=639s submitted=61212 committed=61011 invalid=0 errors=0
+  t=649s submitted=62201 committed=61915 invalid=0 errors=0
+  t=659s submitted=63714 committed=63462 invalid=0 errors=0
+  t=669s submitted=64439 committed=64130 invalid=0 errors=0
+  t=679s submitted=65236 committed=65007 invalid=0 errors=0
+  t=689s submitted=65916 committed=65416 invalid=0 errors=0
+  t=699s submitted=66560 committed=66465 invalid=0 errors=0
+  t=709s submitted=67750 committed=67676 invalid=0 errors=0
+  t=719s submitted=69275 committed=69136 invalid=0 errors=0
+  t=729s submitted=70444 committed=70233 invalid=0 errors=0
+  t=739s submitted=71691 committed=71358 invalid=0 errors=0
+  t=749s submitted=72122 committed=71904 invalid=0 errors=0
+  t=759s submitted=72976 committed=72724 invalid=0 errors=0
+  t=769s submitted=73569 committed=73069 invalid=0 errors=0
+  t=779s submitted=74261 committed=74211 invalid=0 errors=0
+  t=789s submitted=75437 committed=75288 invalid=0 errors=0
+  t=799s submitted=76510 committed=76493 invalid=0 errors=0
+  t=809s submitted=77950 committed=77794 invalid=0 errors=0
+  t=819s submitted=78990 committed=78907 invalid=0 errors=0
+  t=829s submitted=80606 committed=80433 invalid=0 errors=0
+  t=839s submitted=81249 committed=80749 invalid=0 errors=0
+  t=849s submitted=82117 committed=82010 invalid=0 errors=0
+  t=859s submitted=83676 committed=83486 invalid=0 errors=0
+  t=870s submitted=84929 committed=84705 invalid=0 errors=0
+  t=880s submitted=86311 committed=86115 invalid=0 errors=0
+  t=890s submitted=87643 committed=87407 invalid=0 errors=0
+  t=900s submitted=88554 committed=88304 invalid=0 errors=0
+  t=910s submitted=89891 committed=89698 invalid=0 errors=0
+  t=920s submitted=90822 committed=90530 invalid=0 errors=0
+  t=930s submitted=91927 committed=91630 invalid=0 errors=0
+  t=940s submitted=92630 committed=92396 invalid=0 errors=0
+  t=950s submitted=93396 committed=93140 invalid=0 errors=0
+  t=960s submitted=94454 committed=94323 invalid=0 errors=0
+  t=970s submitted=95515 committed=95218 invalid=0 errors=0
+  t=980s submitted=96424 committed=96230 invalid=0 errors=0
+  t=990s submitted=97303 committed=97021 invalid=0 errors=0
+  t=1000s submitted=98541 committed=98276 invalid=0 errors=0
+  t=1010s submitted=99521 committed=99418 invalid=0 errors=0
+Finished in 1015.6s: committed 100000/100000, invalid 0, errors 0
+  e2e 98.5 tps | 1738 blocks (58 tx/block) | 1750 BA* rounds, 12 empty (0.7% wasted) | p50 4372ms p95 9480ms
+  orderer heights after run: [2184,2184,2184,2184]
+Opened accounts acct0000..acct0999 with $1000 each
+Starting payments benchmark on algorand: 1000 transfers across 1000 accounts ($1000000 issued), concurrency 500, 6% deliberately bad, timeout 300s
+  t=10s done=233 committed=212
+  t=20s done=343 committed=306
+  t=30s done=820 committed=769
+Finished in 33.5s: 930 committed, 30 invalidated at commit, 40 refused before ordering
+  27.8 committed tps | 39 blocks | 40 BA* rounds, 1 empty | p50 12370ms p95 30195ms | heights [2233,2233,2233,2233]
+  forged        sent     16  committed      0  invalid     0  refused    16  {"refused: access denied: channel [mychannel] creator org [Org1MSP]":16}
+  theft         sent      9  committed      0  invalid     0  refused     9  {"refused: not your account: acct belongs to another identity":9}
+  overdraft     sent     15  committed      0  invalid     0  refused    15  {"refused: insufficient funds":15}
+  normal        sent    940  committed    922  invalid    18  refused     0  {"invalid: MVCC_READ_CONFLICT":18}
+  double-spend  sent     20  committed      8  invalid    12  refused     0  {"invalid: MVCC_READ_CONFLICT":12}
+  2012 submissions for 1000 transfers: 1012 resubmissions after losing a race (max 5 per transfer)
+  double-spend pairs with BOTH halves committed: 0 (must be 0)
+  audit: supply $1000000 of $1000000 issued (conserved=true), 1000 balances checked, 0 mismatches, 0 negative -> PASSED
+Starting payments benchmark on algorand: 10000 transfers across 1000 accounts ($1000000 issued), concurrency 500, 6% deliberately bad, timeout 300s
+  t=10s done=370 committed=320
+  t=20s done=805 committed=725
+  t=30s done=1101 committed=1006
+  t=40s done=1546 committed=1388
+  t=50s done=2105 committed=1878
+  t=60s done=2458 committed=2192
+  t=70s done=2769 committed=2477
+  t=80s done=3268 committed=2932
+  t=90s done=3607 committed=3190
+  t=100s done=4108 committed=3530
+  t=110s done=4761 committed=4020
+  t=120s done=5252 committed=4433
+  t=130s done=5532 committed=4651
+  t=140s done=5786 committed=4798
+  t=150s done=6192 committed=5000
+  t=160s done=6557 committed=5195
+  t=170s done=6997 committed=5462
+  t=180s done=7399 committed=5715
+  t=190s done=7729 committed=5878
+  t=200s done=8146 committed=6157
+  t=210s done=8460 committed=6405
+  t=220s done=9079 committed=6948
+  t=230s done=9601 committed=7422
+Finished in 239.8s: 7790 committed, 608 invalidated at commit, 1602 refused before ordering
+  32.5 committed tps | 486 blocks | 487 BA* rounds, 1 empty | p50 9133ms p95 24301ms | heights [2719,2719,2719,2719]
+  forged        sent    141  committed      0  invalid     0  refused   141  {"refused: access denied: channel [mychannel] creator org [Org1MSP]":141}
+  theft         sent    140  committed      0  invalid     0  refused   140  {"refused: not your account: acct belongs to another identity":140}
+  overdraft     sent    145  committed      0  invalid     0  refused   145  {"refused: insufficient funds":145}
+  normal        sent   9274  committed   7722  invalid   450  refused  1102  {"refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match":1102,"invalid: MVCC_READ_CONFLICT":450}
+  double-spend  sent    300  committed     68  invalid   158  refused    74  {"invalid: MVCC_READ_CONFLICT":158,"refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match":74}
+  28535 submissions for 10000 transfers: 18535 resubmissions after losing a race (max 5 per transfer)
+  double-spend pairs with BOTH halves committed: 0 (must be 0)
+  audit: supply $1000000 of $1000000 issued (conserved=true), 1000 balances checked, 0 mismatches, 0 negative -> PASSED

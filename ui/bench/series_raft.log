@@ -1,0 +1,165 @@
+raft: stopping orderer (the Raft leader) at t=20s, restarting at t=40s
+  t=20s docker stop orderer
+  t=40s docker start orderer
+  committed 160 (20 client errors); longest gap after the crash 40.00 s
+  commits per second: 0 0 0 20 0 20 0 20 0 0 20 0 20 0 20 0 20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Starting benchmark on raft: 1000 txs, concurrency 25, timeout 300s
+  t=10s submitted=125 committed=100 invalid=0 errors=0
+  t=20s submitted=225 committed=200 invalid=0 errors=0
+  t=30s submitted=350 committed=325 invalid=0 errors=0
+  t=40s submitted=450 committed=425 invalid=0 errors=0
+  t=50s submitted=575 committed=550 invalid=0 errors=0
+  t=60s submitted=675 committed=675 invalid=0 errors=0
+  t=70s submitted=800 committed=775 invalid=0 errors=0
+  t=80s submitted=900 committed=900 invalid=0 errors=0
+Finished in 88.7s: committed 1000/1000, invalid 0, errors 0
+  e2e 11.3 tps | 40 blocks (25 tx/block) | no BA* rounds (Raft) | p50 2186ms p95 2416ms
+Starting benchmark on raft: 1000 txs, concurrency 500, timeout 300s
+Finished in 8.6s: committed 1000/1000, invalid 0, errors 0
+  e2e 116.4 tps | 3 blocks (333 tx/block) | no BA* rounds (Raft) | p50 3975ms p95 5779ms
+Starting benchmark on raft: 10000 txs, concurrency 500, timeout 300s
+  t=10s submitted=1585 committed=1085 invalid=0 errors=0
+  t=20s submitted=2305 committed=2085 invalid=0 errors=0
+  t=30s submitted=3585 committed=3585 invalid=0 errors=0
+  t=40s submitted=5091 committed=4591 invalid=0 errors=0
+  t=50s submitted=6230 committed=6091 invalid=0 errors=0
+  t=60s submitted=7591 committed=7591 invalid=0 errors=0
+  t=70s submitted=8728 committed=8228 invalid=0 errors=0
+  t=80s submitted=9340 committed=9228 invalid=0 errors=0
+  t=90s submitted=10000 committed=9840 invalid=0 errors=0
+Finished in 90.4s: committed 10000/10000, invalid 0, errors 0
+  e2e 110.7 tps | 30 blocks (333 tx/block) | no BA* rounds (Raft) | p50 3992ms p95 6575ms
+Starting benchmark on raft: 100000 txs, concurrency 500, timeout 2000s
+  t=10s submitted=1097 committed=1000 invalid=0 errors=0
+  t=20s submitted=2799 committed=2315 invalid=0 errors=0
+  t=30s submitted=4247 committed=4064 invalid=0 errors=0
+  t=40s submitted=5350 committed=5092 invalid=0 errors=0
+  t=50s submitted=6595 committed=6404 invalid=0 errors=0
+  t=60s submitted=7849 committed=7404 invalid=0 errors=0
+  t=71s submitted=9105 committed=8715 invalid=0 errors=0
+  t=81s submitted=10708 committed=10215 invalid=0 errors=14
+  t=91s submitted=11763 committed=11763 invalid=0 errors=14
+  t=101s submitted=12763 committed=12763 invalid=0 errors=14
+  t=111s submitted=13913 committed=13702 invalid=0 errors=14
+  t=121s submitted=15461 committed=15461 invalid=0 errors=14
+  t=131s submitted=16944 committed=16672 invalid=0 errors=14
+  t=141s submitted=18172 committed=17672 invalid=0 errors=14
+  t=151s submitted=18751 committed=18751 invalid=0 errors=14
+  t=161s submitted=19796 committed=19462 invalid=0 errors=14
+  t=171s submitted=20763 committed=20751 invalid=0 errors=14
+  t=181s submitted=21887 committed=21782 invalid=0 errors=14
+  t=191s submitted=23088 committed=22588 invalid=0 errors=14
+  t=201s submitted=24088 committed=23588 invalid=0 errors=14
+  t=211s submitted=24784 committed=24588 invalid=0 errors=14
+  t=221s submitted=25211 committed=25088 invalid=0 errors=14
+  t=231s submitted=26251 committed=26187 invalid=0 errors=14
+  t=241s submitted=27760 committed=27315 invalid=0 errors=14
+  t=252s submitted=28830 committed=28830 invalid=0 errors=14
+  t=262s submitted=29830 committed=29776 invalid=0 errors=14
+  t=272s submitted=30330 committed=29830 invalid=0 errors=14
+  t=282s submitted=31330 committed=31117 invalid=0 errors=14
+  t=292s submitted=32761 committed=32298 invalid=0 errors=14
+  t=302s submitted=33538 committed=33538 invalid=0 errors=14
+  t=312s submitted=34587 committed=34556 invalid=0 errors=14
+  t=322s submitted=35631 committed=35631 invalid=0 errors=14
+  t=332s submitted=37050 committed=36646 invalid=0 errors=14
+  t=342s submitted=38215 committed=38211 invalid=0 errors=14
+  t=352s submitted=39261 committed=38936 invalid=0 errors=14
+  t=362s submitted=40489 committed=39989 invalid=0 errors=14
+  t=372s submitted=41682 committed=41182 invalid=0 errors=14
+  t=382s submitted=43355 committed=42855 invalid=0 errors=14
+  t=392s submitted=44559 committed=44355 invalid=0 errors=14
+  t=402s submitted=45820 committed=45651 invalid=0 errors=14
+  t=412s submitted=47260 committed=47221 invalid=0 errors=14
+  t=422s submitted=48345 committed=48221 invalid=0 errors=14
+  t=432s submitted=49265 committed=49255 invalid=0 errors=14
+  t=442s submitted=49757 committed=49755 invalid=0 errors=14
+  t=452s submitted=50344 committed=50255 invalid=0 errors=14
+  t=463s submitted=50938 committed=50938 invalid=0 errors=14
+  t=473s submitted=51938 committed=51438 invalid=0 errors=14
+  t=483s submitted=52443 committed=52438 invalid=0 errors=14
+  t=493s submitted=53673 committed=53599 invalid=0 errors=14
+  t=503s submitted=54673 committed=54173 invalid=0 errors=14
+  t=513s submitted=55345 committed=55345 invalid=0 errors=14
+  t=523s submitted=56230 committed=55845 invalid=0 errors=14
+  t=533s submitted=56984 committed=56698 invalid=0 errors=14
+  t=543s submitted=58388 committed=57888 invalid=0 errors=14
+  t=553s submitted=59527 committed=59063 invalid=0 errors=14
+  t=563s submitted=60131 committed=60058 invalid=0 errors=14
+  t=574s submitted=61190 committed=61190 invalid=0 errors=14
+  t=584s submitted=62286 committed=61786 invalid=0 errors=14
+  t=594s submitted=62972 committed=62742 invalid=0 errors=14
+  t=604s submitted=64125 committed=63979 invalid=0 errors=14
+  t=614s submitted=65040 committed=64979 invalid=0 errors=14
+  t=624s submitted=66151 committed=66010 invalid=0 errors=14
+  t=634s submitted=67510 committed=67010 invalid=0 errors=14
+  t=644s submitted=68385 committed=68010 invalid=0 errors=14
+  t=655s submitted=68508 committed=68010 invalid=0 errors=14
+  t=666s submitted=68510 committed=68129 invalid=0 errors=14
+  t=676s submitted=69384 committed=69241 invalid=0 errors=14
+  t=686s submitted=70964 committed=70464 invalid=0 errors=14
+  t=697s submitted=72150 committed=71964 invalid=0 errors=14
+  t=707s submitted=73464 committed=73464 invalid=0 errors=14
+  t=717s submitted=74964 committed=74464 invalid=0 errors=14
+  t=727s submitted=76033 committed=75964 invalid=0 errors=14
+  t=737s submitted=78195 committed=77695 invalid=0 errors=14
+  t=747s submitted=79695 committed=79249 invalid=0 errors=14
+  t=757s submitted=81295 committed=80795 invalid=0 errors=14
+  t=767s submitted=82880 committed=82380 invalid=0 errors=14
+  t=777s submitted=83460 committed=83380 invalid=0 errors=14
+  t=787s submitted=84442 committed=84229 invalid=0 errors=14
+  t=797s submitted=84942 committed=84442 invalid=0 errors=14
+  t=807s submitted=85442 committed=85268 invalid=0 errors=14
+  t=817s submitted=86201 committed=86060 invalid=0 errors=14
+  t=827s submitted=86706 committed=86532 invalid=0 errors=14
+  t=837s submitted=87941 committed=87908 invalid=0 errors=14
+  t=847s submitted=89111 committed=88611 invalid=0 errors=14
+  t=857s submitted=90531 committed=90031 invalid=0 errors=14
+  t=867s submitted=91818 committed=91652 invalid=0 errors=14
+  t=877s submitted=93652 committed=93152 invalid=0 errors=14
+  t=887s submitted=94929 committed=94847 invalid=0 errors=14
+  t=897s submitted=96974 committed=96474 invalid=0 errors=14
+  t=907s submitted=98549 committed=98474 invalid=0 errors=14
+Finished in 916.2s: committed 99986/100000, invalid 0, errors 14
+  e2e 109.1 tps | 336 blocks (298 tx/block) | no BA* rounds (Raft) | p50 4120ms p95 8293ms
+  error x14: 9 FAILED_PRECONDITION: no combination of peers can be derived which satisfy the endorsement policy: no peer combination can satisfy the endorsement policy
+Opened accounts acct0000..acct0999 with $1000 each
+Starting payments benchmark on raft: 1000 transfers across 1000 accounts ($1000000 issued), concurrency 500, 6% deliberately bad, timeout 300s
+  t=10s done=769 committed=715
+Finished in 18.5s: 942 committed, 17 invalidated at commit, 41 refused before ordering
+  50.9 committed tps | 9 blocks | no BA* rounds (Raft) | p50 3921ms p95 11601ms
+  forged        sent     13  committed      0  invalid     0  refused    13  {"refused: access denied: channel [mychannel] creator org [Org1MSP]":13}
+  theft         sent     13  committed      0  invalid     0  refused    13  {"refused: not your account: acct belongs to another identity":13}
+  overdraft     sent     15  committed      0  invalid     0  refused    15  {"refused: insufficient funds":15}
+  normal        sent    941  committed    937  invalid     4  refused     0  {"invalid: MVCC_READ_CONFLICT":4}
+  double-spend  sent     18  committed      5  invalid    13  refused     0  {"invalid: MVCC_READ_CONFLICT":13}
+  1883 submissions for 1000 transfers: 883 resubmissions after losing a race (max 5 per transfer)
+  double-spend pairs with BOTH halves committed: 0 (must be 0)
+  audit: supply $1000000 of $1000000 issued (conserved=true), 1000 balances checked, 0 mismatches, 0 negative -> PASSED
+Starting payments benchmark on raft: 10000 transfers across 1000 accounts ($1000000 issued), concurrency 500, 6% deliberately bad, timeout 300s
+  t=10s done=727 committed=667
+  t=20s done=1638 committed=1490
+  t=30s done=2700 committed=2449
+  t=40s done=3316 committed=3003
+  t=50s done=4136 committed=3742
+  t=60s done=4857 committed=4406
+  t=70s done=5429 committed=4934
+  t=80s done=5970 committed=5424
+  t=90s done=6299 committed=5719
+  t=100s done=6599 committed=5991
+  t=110s done=6980 committed=6338
+  t=120s done=7502 committed=6807
+  t=130s done=8094 committed=7336
+  t=140s done=8880 committed=8053
+  t=150s done=9401 committed=8515
+  t=161s done=9987 committed=9076
+Finished in 166.6s: 9089 committed, 431 invalidated at commit, 480 refused before ordering
+  54.6 committed tps | 86 blocks | no BA* rounds (Raft) | p50 5542ms p95 19777ms
+  forged        sent    131  committed      0  invalid     0  refused   131  {"refused: access denied: channel [mychannel] creator org [Org1MSP]":131}
+  theft         sent    154  committed      0  invalid     0  refused   154  {"refused: not your account: acct belongs to another identity":154}
+  overdraft     sent    155  committed      0  invalid     0  refused   155  {"refused: insufficient funds":155}
+  normal        sent   9260  committed   8988  invalid   246  refused    26  {"invalid: MVCC_READ_CONFLICT":246,"refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match":23,"refused: insufficient funds":3}
+  double-spend  sent    300  committed    101  invalid   185  refused    14  {"invalid: MVCC_READ_CONFLICT":185,"refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match":14}
+  20063 submissions for 10000 transfers: 10063 resubmissions after losing a race (max 5 per transfer)
+  double-spend pairs with BOTH halves committed: 0 (must be 0)
+  audit: supply $1000000 of $1000000 issued (conserved=true), 1000 balances checked, 0 mismatches, 0 negative -> PASSED

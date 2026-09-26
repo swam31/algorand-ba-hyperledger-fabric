@@ -1,0 +1,60 @@
+[
+  {
+    "scale": "3000",
+    "concurrency": 200,
+    "submitted": 3000,
+    "totalTxs": 3000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 79.324,
+    "e2eTps": 37.81957541223337,
+    "ordTps": 37.820052191672026,
+    "blocks": 72,
+    "txPerBlock": 41.666666666666664,
+    "rounds": 72,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      78,
+      78,
+      78,
+      78
+    ],
+    "p50": 4034,
+    "p95": 13646,
+    "stalls": 0,
+    "timestamp": "2026-09-25T09:53:38.048Z",
+    "note": "lag-test.sh: orderer3 frozen for 15s mid-run"
+  },
+  {
+    "scale": "500",
+    "concurrency": 100,
+    "submitted": 500,
+    "totalTxs": 500,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 24.402,
+    "e2eTps": 20.49012376034751,
+    "ordTps": 20.49012376034751,
+    "blocks": 21,
+    "txPerBlock": 23.80952380952381,
+    "rounds": 21,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      99,
+      99,
+      99,
+      99
+    ],
+    "p50": 4121,
+    "p95": 7271,
+    "stalls": 0,
+    "timestamp": "2026-09-25T09:54:50.868Z",
+    "note": "orderer3 restarted while idle, then this load"
+  }
+]

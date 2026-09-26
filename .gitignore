@@ -1,0 +1,18 @@
+# Upstream code fetched or cloned locally by the scripts (not ours; ~670 MB)
+fabric/scripts/fabric-src/
+fabric/scripts/fabric-samples/
+
+# Generated on every network start: orderer private keys and member list
+fabric/scripts/keys/
+
+# Build outputs
+fabric/scripts/genkey
+/scalesim
+
+# Node dependencies
+node_modules/
+
+# Temporary files written by the benchmark scripts
+ui/bench/.badnet_row_*.json
+
+.DS_Store

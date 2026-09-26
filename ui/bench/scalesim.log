@@ -1,0 +1,90 @@
+scalesim: 4 nodes (4 online), $1000 each, W=4000, tau proposer/step/final = 26/2000/2000, 500 payments/round
+  one vote costs 127 us to verify on this machine
+  round 1: FINAL by node-00000 (4 proposers), 467 payments (+39 refused), 28 votes, agreed=true, 0.0s
+  round 2: FINAL by node-00000 (3 proposers), 471 payments (+35 refused), 28 votes, agreed=true, 0.0s
+  round 3: FINAL by node-00000 (3 proposers), 469 payments (+40 refused), 28 votes, agreed=true, 0.0s
+  round 4: FINAL by node-00000 (3 proposers), 474 payments (+38 refused), 28 votes, agreed=true, 0.0s
+  round 5: FINAL by node-00002 (4 proposers), 453 payments (+56 refused), 28 votes, agreed=true, 0.0s
+  round 6: FINAL by node-00002 (3 proposers), 469 payments (+42 refused), 28 votes, agreed=true, 0.0s
+  round 7: FINAL by node-00000 (4 proposers), 467 payments (+42 refused), 28 votes, agreed=true, 0.0s
+  round 8: FINAL by node-00002 (3 proposers), 459 payments (+48 refused), 28 votes, agreed=true, 0.0s
+  round 9: FINAL by node-00002 (4 proposers), 484 payments (+24 refused), 28 votes, agreed=true, 0.0s
+  round 10: FINAL by node-00002 (3 proposers), 456 payments (+52 refused), 28 votes, agreed=true, 0.0s
+summary: 10 FINAL, 0 TENTATIVE, 0 EMPTY; all agreed=true; supply $4000 -> $4000 (conserved=true)
+  audit passed=true: replayed 4669 committed payments: every signature valid, no account ever negative, all 4 balances match
+  double-spend committed   121  refused    49
+  forged       committed     0  refused    75
+  overdraft    committed    11  refused    85
+  normal       committed  4537  refused   207
+  per round: 3 proposers, 4 voters/step (2003 seats), 28 votes; each node receives 9.0 KB and spends ~4 ms verifying votes
+scalesim: 100 nodes (100 online), $1000 each, W=100000, tau proposer/step/final = 26/2000/10000, 500 payments/round
+  one vote costs 119 us to verify on this machine
+  round 1: FINAL by node-00024 (29 proposers), 489 payments (+23 refused), 700 votes, agreed=true, 0.1s
+  round 2: FINAL by node-00077 (22 proposers), 481 payments (+26 refused), 696 votes, agreed=true, 0.1s
+  round 3: FINAL by node-00092 (28 proposers), 472 payments (+40 refused), 686 votes, agreed=true, 0.1s
+  round 4: FINAL by node-00001 (26 proposers), 477 payments (+34 refused), 688 votes, agreed=true, 0.1s
+  round 5: FINAL by node-00065 (23 proposers), 481 payments (+25 refused), 692 votes, agreed=true, 0.1s
+  round 6: FINAL by node-00021 (24 proposers), 461 payments (+47 refused), 666 votes, agreed=true, 0.1s
+  round 7: FINAL by node-00013 (25 proposers), 457 payments (+52 refused), 675 votes, agreed=true, 0.1s
+  round 8: FINAL by node-00002 (23 proposers), 466 payments (+40 refused), 667 votes, agreed=true, 0.1s
+  round 9: FINAL by node-00047 (23 proposers), 464 payments (+45 refused), 673 votes, agreed=true, 0.1s
+  round 10: FINAL by node-00016 (22 proposers), 472 payments (+34 refused), 681 votes, agreed=true, 0.1s
+summary: 10 FINAL, 0 TENTATIVE, 0 EMPTY; all agreed=true; supply $100000 -> $100000 (conserved=true)
+  audit passed=true: replayed 4720 committed payments: every signature valid, no account ever negative, all 100 balances match
+  double-spend committed   115  refused    57
+  forged       committed     0  refused    99
+  overdraft    committed     0  refused    79
+  normal       committed  4605  refused   131
+  per round: 24 proposers, 97 voters/step (1997 seats), 682 votes; each node receives 218.6 KB and spends ~81 ms verifying votes
+scalesim: 1000 nodes (1000 online), $1000 each, W=1000000, tau proposer/step/final = 26/2000/10000, 500 payments/round
+  one vote costs 139 us to verify on this machine
+  round 1: FINAL by node-00235 (21 proposers), 479 payments (+32 refused), 6171 votes, agreed=true, 0.9s
+  round 2: FINAL by node-00950 (30 proposers), 486 payments (+22 refused), 6193 votes, agreed=true, 0.9s
+  round 3: FINAL by node-00268 (18 proposers), 478 payments (+34 refused), 6160 votes, agreed=true, 0.9s
+  round 4: FINAL by node-00379 (19 proposers), 483 payments (+27 refused), 6149 votes, agreed=true, 0.9s
+  round 5: FINAL by node-00293 (23 proposers), 481 payments (+24 refused), 6145 votes, agreed=true, 1.0s
+  round 6: FINAL by node-00854 (30 proposers), 472 payments (+38 refused), 6064 votes, agreed=true, 0.9s
+  round 7: FINAL by node-00911 (31 proposers), 480 payments (+31 refused), 6057 votes, agreed=true, 0.9s
+  round 8: FINAL by node-00593 (28 proposers), 479 payments (+27 refused), 6095 votes, agreed=true, 0.9s
+  round 9: FINAL by node-00632 (23 proposers), 485 payments (+25 refused), 6064 votes, agreed=true, 0.8s
+  round 10: FINAL by node-00204 (35 proposers), 482 payments (+26 refused), 6002 votes, agreed=true, 0.9s
+summary: 10 FINAL, 0 TENTATIVE, 0 EMPTY; all agreed=true; supply $1000000 -> $1000000 (conserved=true)
+  audit passed=true: replayed 4805 committed payments: every signature valid, no account ever negative, all 1000 balances match
+  normal       committed  4698  refused    14
+  double-spend committed   107  refused    75
+  forged       committed     0  refused   112
+  overdraft    committed     0  refused    85
+  per round: 26 proposers, 852 voters/step (1994 seats), 6110 votes; each node receives 1957.1 KB and spends ~852 ms verifying votes
+scalesim: 1000 nodes (900 online), $1000 each, W=1000000, tau proposer/step/final = 26/2000/10000, 500 payments/round
+  one vote costs 119 us to verify on this machine
+  round 1: FINAL by node-00350 (22 proposers), 479 payments (+32 refused), 5560 votes, agreed=true, 1.0s
+  round 2: FINAL by node-00687 (31 proposers), 486 payments (+22 refused), 5585 votes, agreed=true, 0.9s
+  round 3: FINAL by node-00305 (25 proposers), 478 payments (+34 refused), 5568 votes, agreed=true, 0.9s
+  round 4: FINAL by node-00541 (23 proposers), 483 payments (+27 refused), 5522 votes, agreed=true, 0.8s
+  round 5: FINAL by node-00852 (34 proposers), 481 payments (+24 refused), 5460 votes, agreed=true, 0.8s
+  round 6: FINAL by node-00596 (31 proposers), 472 payments (+38 refused), 5449 votes, agreed=true, 0.9s
+  round 7: FINAL by node-00169 (25 proposers), 480 payments (+31 refused), 5475 votes, agreed=true, 0.8s
+  round 8: FINAL by node-00408 (25 proposers), 479 payments (+27 refused), 5409 votes, agreed=true, 0.8s
+  round 9: FINAL by node-00464 (20 proposers), 485 payments (+25 refused), 5396 votes, agreed=true, 0.9s
+  round 10: FINAL by node-00341 (17 proposers), 482 payments (+26 refused), 5388 votes, agreed=true, 0.8s
+summary: 10 FINAL, 0 TENTATIVE, 0 EMPTY; all agreed=true; supply $1000000 -> $1000000 (conserved=true)
+  audit passed=true: replayed 4805 committed payments: every signature valid, no account ever negative, all 1000 balances match
+  normal       committed  4698  refused    14
+  double-spend committed   107  refused    75
+  forged       committed     0  refused   112
+  overdraft    committed     0  refused    85
+  per round: 25 proposers, 764 voters/step (1797 seats), 5481 votes; each node receives 1755.7 KB and spends ~653 ms verifying votes
+scalesim: 10000 nodes (10000 online), $1000 each, W=10000000, tau proposer/step/final = 26/2000/10000, 500 payments/round
+  one vote costs 164 us to verify on this machine
+  round 1: FINAL by node-08508 (23 proposers), 478 payments (+33 refused), 17285 votes, agreed=true, 28.8s
+  round 2: FINAL by node-05618 (26 proposers), 483 payments (+25 refused), 17427 votes, agreed=true, 38.7s
+  round 3: FINAL by node-00394 (29 proposers), 476 payments (+36 refused), 17333 votes, agreed=true, 79.8s
+  round 4: FINAL by node-01616 (24 proposers), 483 payments (+27 refused), 17259 votes, agreed=true, 43.5s
+  round 5: FINAL by node-04445 (29 proposers), 482 payments (+23 refused), 17128 votes, agreed=true, 55.6s
+summary: 5 FINAL, 0 TENTATIVE, 0 EMPTY; all agreed=true; supply $10000000 -> $10000000 (conserved=true)
+  audit passed=true: replayed 2402 committed payments: every signature valid, no account ever negative, all 10000 balances match
+  normal       committed  2355  refused     0
+  double-spend committed    47  refused    45
+  forged       committed     0  refused    58
+  overdraft    committed     0  refused    41
+  per round: 26 proposers, 1822 voters/step (2010 seats), 17286 votes; each node receives 5537.1 KB and spends ~2828 ms verifying votes

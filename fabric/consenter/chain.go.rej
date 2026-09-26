@@ -1,0 +1,18 @@
+@@ -148,3 +148,3 @@
+ 			if err := json.Unmarshal(payload, &prop); err == nil {
+-				if prop.Round == currentRound {
++				if prop.Round >= currentRound {
+ 					select {
+@@ -212,2 +214,11 @@
+ 		var processChan <-chan time.Time
+-		if len(pending) > 0 {
++
++		c.Lock()
++		currentRound := c.support.Height() + c.failedRounds
++		c.Unlock()
++
++		if _, ok := futureProps[currentRound]; ok {
++			processChan = time.After(0)
++		} else if futureWakeups[currentRound] {
++			processChan = time.After(0)
++		} else if len(pending) > 0 {

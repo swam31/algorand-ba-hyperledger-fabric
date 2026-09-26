@@ -1,0 +1,62 @@
+Peers pull blocks from: orderer4, orderer3; faults target orderer, orderer2
+
+=== baseline: Healthy network (no fault)
+  committed 4459 in 90s (49.5 tps), p50 856 ms, p95 1650 ms, 238 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 238/0/1 · orderer2 238/0/1 · orderer3 238/0/1 · orderer4 238/0/1
+  after removing the fault: all four identical after 0 s at height 358/358/358/358 hash fec305910999
+
+=== wan-100: Every consensus message delayed 100 ms ± 20 ms (a continent-wide WAN)
+  orderer: delay 100ms 20ms
+orderer2: delay 100ms 20ms
+orderer3: delay 100ms 20ms
+orderer4: delay 100ms 20ms
+  committed 982 in 90s (10.9 tps), p50 3356 ms, p95 16088 ms, 56 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 56/0/4 · orderer2 56/0/3 · orderer3 56/0/3 · orderer4 56/0/3
+  after removing the fault: all four identical after 0 s at height 415/415/415/415 hash 7591594a5d85
+
+=== wan-500: Every consensus message delayed 500 ms ± 300 ms (bad WAN; packets reordered)
+  orderer: delay 500ms 300ms
+orderer2: delay 500ms 300ms
+orderer3: delay 500ms 300ms
+orderer4: delay 500ms 300ms
+  committed 0 in 90s (0.0 tps), p50 0 ms, p95 0 ms, 0 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 0/0/9 · orderer2 0/0/9 · orderer3 0/0/9 · orderer4 0/0/9
+  after removing the fault: all four identical after 0 s at height 415/415/415/415 hash 7591594a5d85
+
+=== loss-10: 10% of consensus packets dropped (TCP retransmits them late)
+  orderer: loss 10%
+orderer2: loss 10%
+orderer3: loss 10%
+orderer4: loss 10%
+  committed 572 in 90s (6.3 tps), p50 7750 ms, p95 15791 ms, 27 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 26/1/7 · orderer2 26/1/7 · orderer3 26/1/7 · orderer4 26/1/7
+  after removing the fault: all four identical after 0 s at height 445/445/445/445 hash a5519c6e16d7
+
+=== slow-node: One orderer (orderer) delayed 1.5 s ± 0.5 s: its proposals miss the 1 s window
+  orderer: delay 1500ms 500ms
+  committed 312 in 90s (3.5 tps), p50 1753 ms, p95 23264 ms, 75 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 75/0/0 · orderer2 75/0/0 · orderer3 75/0/0 · orderer4 75/0/0
+  after removing the fault: all four identical after 12 s at height 521/521/521/521 hash 82f4b6fa4015
+
+=== very-slow: All consensus messages delayed 1.5 s ± 0.5 s: longer than the 1 s proposal window
+  orderer: delay 1500ms 500ms
+orderer2: delay 1500ms 500ms
+orderer3: delay 1500ms 500ms
+orderer4: delay 1500ms 500ms
+  committed 0 in 90s (0.0 tps), p50 0 ms, p95 0 ms, 0 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 0/0/7 · orderer2 0/0/7 · orderer3 0/0/7 · orderer4 0/0/6
+  after removing the fault: all four identical after 0 s at height 521/521/521/521 hash 82f4b6fa4015
+
+=== isolate-1: One orderer (orderer) cut off completely: f = 1 of 4 missing
+  orderer: loss 100%
+  committed 2710 in 90s (30.1 tps), p50 863 ms, p95 2874 ms, 212 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 0/0/0 · orderer2 212/0/0 · orderer3 212/0/0 · orderer4 212/0/0
+  after removing the fault: all four identical after 39 s at height 736/736/736/736 hash a4f034a1d303
+
+=== partition-2: Two orderers (orderer, orderer2) cut off for 45 s, then reconnected: no 3-of-4 quorum
+  orderer: loss 100%
+  orderer2: loss 100%
+  t=45s: reconnecting (cleared: orderer orderer2 orderer3 orderer4)
+  committed 687 in 90s (7.6 tps), p50 3158 ms, p95 4689 ms, 57 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 57/0/0 · orderer2 57/0/0 · orderer3 57/0/0 · orderer4 57/0/0
+  after removing the fault: all four identical after 0 s at height 793/793/793/793 hash 959624c7b395

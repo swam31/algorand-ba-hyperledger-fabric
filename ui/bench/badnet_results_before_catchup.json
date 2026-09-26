@@ -1,0 +1,1427 @@
+[
+  {
+    "id": "baseline",
+    "title": "Healthy network (no fault)",
+    "faults": [],
+    "healAfterSec": null,
+    "loadSeconds": 90,
+    "committed": 3272,
+    "tps": 36.30472893504649,
+    "p50": 958,
+    "p95": 3599,
+    "blocks": 205,
+    "rounds": [
+      {
+        "orderer": "orderer",
+        "total": 205,
+        "final": 205,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer2",
+        "total": 205,
+        "final": 205,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer3",
+        "total": 205,
+        "final": 205,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer4",
+        "total": 205,
+        "final": 205,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      }
+    ],
+    "heightsEvery5s": [
+      [
+        9,
+        9,
+        9,
+        9
+      ],
+      [
+        15,
+        16,
+        16,
+        16
+      ],
+      [
+        25,
+        25,
+        25,
+        25
+      ],
+      [
+        31,
+        31,
+        31,
+        31
+      ],
+      [
+        38,
+        38,
+        38,
+        38
+      ],
+      [
+        47,
+        47,
+        47,
+        47
+      ],
+      [
+        53,
+        54,
+        53,
+        53
+      ],
+      [
+        63,
+        63,
+        63,
+        63
+      ],
+      [
+        75,
+        75,
+        75,
+        75
+      ],
+      [
+        88,
+        88,
+        88,
+        88
+      ],
+      [
+        103,
+        103,
+        103,
+        103
+      ],
+      [
+        118,
+        118,
+        118,
+        118
+      ],
+      [
+        134,
+        133,
+        133,
+        133
+      ],
+      [
+        149,
+        149,
+        149,
+        149
+      ],
+      [
+        165,
+        165,
+        165,
+        165
+      ],
+      [
+        181,
+        181,
+        181,
+        181
+      ],
+      [
+        196,
+        196,
+        196,
+        196
+      ],
+      [
+        209,
+        209,
+        209,
+        209
+      ]
+    ],
+    "forkFree": true,
+    "convergedAfterSec": 0.043,
+    "finalHeights": [
+      214,
+      214,
+      214,
+      214
+    ],
+    "finalHashes": [
+      "a7507023cf3f",
+      "a7507023cf3f",
+      "a7507023cf3f",
+      "a7507023cf3f"
+    ],
+    "timestamp": "2026-09-25T15:43:54.409Z"
+  },
+  {
+    "id": "wan-100",
+    "title": "Every consensus message delayed 100 ms ± 20 ms (a continent-wide WAN)",
+    "faults": [
+      "all delay 100ms 20ms"
+    ],
+    "healAfterSec": null,
+    "loadSeconds": 90,
+    "committed": 887,
+    "tps": 9.843306107954547,
+    "p50": 3027,
+    "p95": 16624,
+    "blocks": 48,
+    "rounds": [
+      {
+        "orderer": "orderer",
+        "total": 53,
+        "final": 48,
+        "tentative": 0,
+        "empty": 5,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer2",
+        "total": 53,
+        "final": 46,
+        "tentative": 2,
+        "empty": 5,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer3",
+        "total": 53,
+        "final": 47,
+        "tentative": 1,
+        "empty": 5,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer4",
+        "total": 53,
+        "final": 48,
+        "tentative": 0,
+        "empty": 5,
+        "failed": 0
+      }
+    ],
+    "heightsEvery5s": [
+      [
+        215,
+        215,
+        215,
+        215
+      ],
+      [
+        215,
+        215,
+        215,
+        215
+      ],
+      [
+        218,
+        218,
+        218,
+        218
+      ],
+      [
+        221,
+        221,
+        221,
+        221
+      ],
+      [
+        221,
+        221,
+        221,
+        221
+      ],
+      [
+        221,
+        221,
+        221,
+        221
+      ],
+      [
+        223,
+        223,
+        223,
+        223
+      ],
+      [
+        226,
+        226,
+        227,
+        226
+      ],
+      [
+        228,
+        228,
+        228,
+        228
+      ],
+      [
+        229,
+        229,
+        229,
+        229
+      ],
+      [
+        229,
+        229,
+        229,
+        229
+      ],
+      [
+        233,
+        233,
+        233,
+        233
+      ],
+      [
+        237,
+        237,
+        237,
+        237
+      ],
+      [
+        237,
+        237,
+        237,
+        237
+      ],
+      [
+        242,
+        242,
+        242,
+        242
+      ],
+      [
+        249,
+        249,
+        249,
+        249
+      ],
+      [
+        255,
+        255,
+        255,
+        254
+      ],
+      [
+        261,
+        261,
+        261,
+        261
+      ]
+    ],
+    "forkFree": true,
+    "convergedAfterSec": 0.008,
+    "finalHeights": [
+      265,
+      265,
+      265,
+      265
+    ],
+    "finalHashes": [
+      "e6ef49ba0cb0",
+      "e6ef49ba0cb0",
+      "e6ef49ba0cb0",
+      "e6ef49ba0cb0"
+    ],
+    "timestamp": "2026-09-25T15:46:03.275Z"
+  },
+  {
+    "id": "wan-500",
+    "title": "Every consensus message delayed 500 ms ± 300 ms (bad WAN; packets reordered)",
+    "faults": [
+      "all delay 500ms 300ms"
+    ],
+    "healAfterSec": null,
+    "loadSeconds": 90,
+    "committed": 0,
+    "tps": 0,
+    "p50": 0,
+    "p95": 0,
+    "blocks": 0,
+    "rounds": [
+      {
+        "orderer": "orderer",
+        "total": 9,
+        "final": 0,
+        "tentative": 0,
+        "empty": 9,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer2",
+        "total": 9,
+        "final": 0,
+        "tentative": 0,
+        "empty": 9,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer3",
+        "total": 9,
+        "final": 0,
+        "tentative": 0,
+        "empty": 9,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer4",
+        "total": 9,
+        "final": 0,
+        "tentative": 0,
+        "empty": 9,
+        "failed": 0
+      }
+    ],
+    "heightsEvery5s": [
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ],
+      [
+        265,
+        265,
+        265,
+        265
+      ]
+    ],
+    "forkFree": true,
+    "convergedAfterSec": 1.058,
+    "finalHeights": [
+      266,
+      266,
+      266,
+      266
+    ],
+    "finalHashes": [
+      "654df86058cb",
+      "654df86058cb",
+      "654df86058cb",
+      "654df86058cb"
+    ],
+    "timestamp": "2026-09-25T15:48:10.362Z"
+  },
+  {
+    "id": "loss-10",
+    "title": "10% of consensus packets dropped (TCP retransmits them late)",
+    "faults": [
+      "all loss 10%"
+    ],
+    "healAfterSec": null,
+    "loadSeconds": 90,
+    "committed": 940,
+    "tps": 10.429379784755353,
+    "p50": 3168,
+    "p95": 15742,
+    "blocks": 54,
+    "rounds": [
+      {
+        "orderer": "orderer",
+        "total": 58,
+        "final": 54,
+        "tentative": 0,
+        "empty": 4,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer2",
+        "total": 58,
+        "final": 54,
+        "tentative": 0,
+        "empty": 4,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer3",
+        "total": 58,
+        "final": 54,
+        "tentative": 0,
+        "empty": 4,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer4",
+        "total": 58,
+        "final": 54,
+        "tentative": 0,
+        "empty": 4,
+        "failed": 0
+      }
+    ],
+    "heightsEvery5s": [
+      [
+        267,
+        267,
+        267,
+        267
+      ],
+      [
+        270,
+        270,
+        269,
+        270
+      ],
+      [
+        274,
+        274,
+        274,
+        274
+      ],
+      [
+        279,
+        278,
+        279,
+        278
+      ],
+      [
+        285,
+        285,
+        285,
+        284
+      ],
+      [
+        288,
+        288,
+        288,
+        288
+      ],
+      [
+        289,
+        289,
+        289,
+        289
+      ],
+      [
+        290,
+        290,
+        290,
+        290
+      ],
+      [
+        296,
+        295,
+        296,
+        296
+      ],
+      [
+        303,
+        303,
+        303,
+        303
+      ],
+      [
+        305,
+        305,
+        305,
+        305
+      ],
+      [
+        305,
+        305,
+        305,
+        305
+      ],
+      [
+        305,
+        305,
+        305,
+        305
+      ],
+      [
+        310,
+        310,
+        310,
+        310
+      ],
+      [
+        310,
+        310,
+        310,
+        310
+      ],
+      [
+        315,
+        316,
+        316,
+        315
+      ],
+      [
+        320,
+        320,
+        320,
+        320
+      ],
+      [
+        320,
+        320,
+        320,
+        320
+      ]
+    ],
+    "forkFree": true,
+    "convergedAfterSec": 0.036,
+    "finalHeights": [
+      322,
+      322,
+      322,
+      322
+    ],
+    "finalHashes": [
+      "13d34e6b27ac",
+      "13d34e6b27ac",
+      "13d34e6b27ac",
+      "13d34e6b27ac"
+    ],
+    "timestamp": "2026-09-25T15:50:17.286Z"
+  },
+  {
+    "id": "slow-node",
+    "title": "One orderer (orderer) delayed 1.5 s ± 0.5 s: its proposals miss the 1 s window",
+    "faults": [
+      "orderer delay 1500ms 500ms"
+    ],
+    "healAfterSec": null,
+    "loadSeconds": 90,
+    "committed": 501,
+    "tps": 5.558945908460472,
+    "p50": 1520,
+    "p95": 38610,
+    "blocks": 136,
+    "rounds": [
+      {
+        "orderer": "orderer",
+        "total": 64,
+        "final": 64,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer2",
+        "total": 136,
+        "final": 136,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer3",
+        "total": 136,
+        "final": 136,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer4",
+        "total": 136,
+        "final": 136,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      }
+    ],
+    "heightsEvery5s": [
+      [
+        322,
+        328,
+        328,
+        327
+      ],
+      [
+        322,
+        336,
+        336,
+        336
+      ],
+      [
+        327,
+        345,
+        345,
+        345
+      ],
+      [
+        327,
+        354,
+        354,
+        354
+      ],
+      [
+        327,
+        365,
+        365,
+        365
+      ],
+      [
+        327,
+        375,
+        375,
+        375
+      ],
+      [
+        327,
+        384,
+        384,
+        385
+      ],
+      [
+        386,
+        398,
+        398,
+        397
+      ],
+      [
+        386,
+        398,
+        398,
+        398
+      ],
+      [
+        386,
+        398,
+        398,
+        398
+      ],
+      [
+        386,
+        398,
+        398,
+        398
+      ],
+      [
+        386,
+        409,
+        409,
+        409
+      ],
+      [
+        386,
+        426,
+        426,
+        426
+      ],
+      [
+        386,
+        443,
+        443,
+        443
+      ],
+      [
+        386,
+        454,
+        454,
+        454
+      ],
+      [
+        386,
+        454,
+        454,
+        454
+      ],
+      [
+        386,
+        454,
+        454,
+        454
+      ],
+      [
+        386,
+        458,
+        458,
+        458
+      ],
+      [
+        386,
+        458,
+        458,
+        458
+      ],
+      [
+        386,
+        458,
+        458,
+        458
+      ],
+      [
+        386,
+        458,
+        458,
+        458
+      ]
+    ],
+    "forkFree": true,
+    "convergedAfterSec": 6.245,
+    "finalHeights": [
+      460,
+      460,
+      460,
+      460
+    ],
+    "finalHashes": [
+      "8b170e607d84",
+      "8b170e607d84",
+      "8b170e607d84",
+      "8b170e607d84"
+    ],
+    "timestamp": "2026-09-25T15:52:30.070Z"
+  },
+  {
+    "id": "very-slow",
+    "title": "All consensus messages delayed 1.5 s ± 0.5 s: longer than the 1 s proposal window",
+    "faults": [
+      "all delay 1500ms 500ms"
+    ],
+    "healAfterSec": null,
+    "loadSeconds": 90,
+    "committed": 0,
+    "tps": 0,
+    "p50": 0,
+    "p95": 0,
+    "blocks": 0,
+    "rounds": [
+      {
+        "orderer": "orderer",
+        "total": 6,
+        "final": 0,
+        "tentative": 0,
+        "empty": 6,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer2",
+        "total": 6,
+        "final": 0,
+        "tentative": 0,
+        "empty": 6,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer3",
+        "total": 6,
+        "final": 0,
+        "tentative": 0,
+        "empty": 6,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer4",
+        "total": 6,
+        "final": 0,
+        "tentative": 0,
+        "empty": 6,
+        "failed": 0
+      }
+    ],
+    "heightsEvery5s": [
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ],
+      [
+        460,
+        460,
+        460,
+        460
+      ]
+    ],
+    "forkFree": true,
+    "convergedAfterSec": 0.017,
+    "finalHeights": [
+      460,
+      460,
+      460,
+      460
+    ],
+    "finalHashes": [
+      "8b170e607d84",
+      "8b170e607d84",
+      "8b170e607d84",
+      "8b170e607d84"
+    ],
+    "timestamp": "2026-09-25T15:54:35.573Z"
+  },
+  {
+    "id": "isolate-1",
+    "title": "One orderer (orderer) cut off completely: f = 1 of 4 missing",
+    "faults": [
+      "orderer loss 100%"
+    ],
+    "healAfterSec": null,
+    "loadSeconds": 90,
+    "committed": 3070,
+    "tps": 34.06984873874974,
+    "p50": 1123,
+    "p95": 3276,
+    "blocks": 190,
+    "rounds": [
+      {
+        "orderer": "orderer",
+        "total": 0,
+        "final": 0,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer2",
+        "total": 190,
+        "final": 190,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer3",
+        "total": 190,
+        "final": 190,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer4",
+        "total": 190,
+        "final": 190,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      }
+    ],
+    "heightsEvery5s": [
+      [
+        461,
+        465,
+        465,
+        465
+      ],
+      [
+        461,
+        472,
+        472,
+        472
+      ],
+      [
+        461,
+        481,
+        481,
+        481
+      ],
+      [
+        461,
+        490,
+        490,
+        490
+      ],
+      [
+        461,
+        499,
+        499,
+        499
+      ],
+      [
+        461,
+        508,
+        508,
+        508
+      ],
+      [
+        461,
+        513,
+        513,
+        513
+      ],
+      [
+        461,
+        519,
+        519,
+        519
+      ],
+      [
+        461,
+        527,
+        527,
+        527
+      ],
+      [
+        461,
+        536,
+        536,
+        536
+      ],
+      [
+        461,
+        543,
+        543,
+        543
+      ],
+      [
+        461,
+        555,
+        555,
+        555
+      ],
+      [
+        461,
+        567,
+        567,
+        567
+      ],
+      [
+        461,
+        579,
+        579,
+        579
+      ],
+      [
+        461,
+        593,
+        593,
+        593
+      ],
+      [
+        461,
+        610,
+        610,
+        610
+      ],
+      [
+        461,
+        627,
+        627,
+        627
+      ],
+      [
+        461,
+        644,
+        644,
+        644
+      ],
+      [
+        461,
+        651,
+        651,
+        651
+      ],
+      [
+        461,
+        651,
+        651,
+        651
+      ],
+      [
+        461,
+        651,
+        651,
+        651
+      ]
+    ],
+    "forkFree": false,
+    "convergedAfterSec": 180,
+    "finalHeights": [
+      461,
+      651,
+      651,
+      651
+    ],
+    "finalHashes": [
+      "cb21dc64d438",
+      "c53b05bcddef",
+      "c53b05bcddef",
+      "c53b05bcddef"
+    ],
+    "timestamp": "2026-09-25T15:59:51.926Z"
+  },
+  {
+    "id": "partition-2",
+    "title": "Two orderers (orderer, orderer2) cut off for 45 s, then reconnected: no 3-of-4 quorum",
+    "faults": [
+      "orderer loss 100%",
+      "orderer2 loss 100%"
+    ],
+    "healAfterSec": 45,
+    "loadSeconds": 90,
+    "committed": 295,
+    "tps": 3.2739218254056337,
+    "p50": 3391,
+    "p95": 45955,
+    "blocks": 46,
+    "rounds": [
+      {
+        "orderer": "orderer",
+        "total": 0,
+        "final": 0,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer2",
+        "total": 46,
+        "final": 46,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer3",
+        "total": 46,
+        "final": 46,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      },
+      {
+        "orderer": "orderer4",
+        "total": 46,
+        "final": 46,
+        "tentative": 0,
+        "empty": 0,
+        "failed": 0
+      }
+    ],
+    "heightsEvery5s": [
+      [
+        461,
+        651,
+        651,
+        651
+      ],
+      [
+        461,
+        651,
+        651,
+        651
+      ],
+      [
+        461,
+        651,
+        651,
+        651
+      ],
+      [
+        461,
+        651,
+        651,
+        651
+      ],
+      [
+        461,
+        651,
+        651,
+        651
+      ],
+      [
+        461,
+        651,
+        651,
+        651
+      ],
+      [
+        461,
+        651,
+        651,
+        651
+      ],
+      [
+        461,
+        651,
+        651,
+        651
+      ],
+      [
+        461,
+        673,
+        673,
+        673
+      ],
+      [
+        461,
+        679,
+        679,
+        679
+      ],
+      [
+        461,
+        686,
+        686,
+        686
+      ],
+      [
+        461,
+        686,
+        686,
+        686
+      ],
+      [
+        461,
+        686,
+        686,
+        686
+      ],
+      [
+        461,
+        686,
+        686,
+        686
+      ],
+      [
+        461,
+        686,
+        686,
+        686
+      ],
+      [
+        461,
+        689,
+        689,
+        689
+      ],
+      [
+        461,
+        697,
+        697,
+        697
+      ],
+      [
+        461,
+        697,
+        697,
+        697
+      ],
+      [
+        461,
+        697,
+        697,
+        697
+      ]
+    ],
+    "forkFree": false,
+    "convergedAfterSec": 180,
+    "finalHeights": [
+      461,
+      699,
+      699,
+      699
+    ],
+    "finalHashes": [
+      "cb21dc64d438",
+      "4a511be9c573",
+      "4a511be9c573",
+      "4a511be9c573"
+    ],
+    "timestamp": "2026-09-25T16:06:12.848Z"
+  }
+]

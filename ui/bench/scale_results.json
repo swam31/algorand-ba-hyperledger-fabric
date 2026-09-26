@@ -1,0 +1,267 @@
+[
+  {
+    "nodes": 4,
+    "online": 4,
+    "rounds": 10,
+    "txsPerRound": 500,
+    "startBalance": 1000,
+    "w": 4000,
+    "tauProposer": 26,
+    "tauStep": 2000,
+    "tauFinal": 2000,
+    "finalRounds": 10,
+    "tentativeRounds": 0,
+    "emptyRounds": 0,
+    "allAgreed": true,
+    "avgProposers": 3.4,
+    "avgVotersPerStep": 4,
+    "avgSeatsPerStep": 2003,
+    "votesPerRound": 28,
+    "sentPerNodePerRound": 7,
+    "kbReceivedPerNodePerRound": 8.96875,
+    "verifyMicrosPerVote": 126.74,
+    "nodeVerifyMsPerRound": 3.54872,
+    "paymentsCommitted": 4669,
+    "paymentsRejected": 416,
+    "kinds": {
+      "double-spend": {
+        "committed": 121,
+        "refused": 49
+      },
+      "forged": {
+        "committed": 0,
+        "refused": 75
+      },
+      "normal": {
+        "committed": 4537,
+        "refused": 207
+      },
+      "overdraft": {
+        "committed": 11,
+        "refused": 85
+      }
+    },
+    "auditPassed": true,
+    "auditNote": "replayed 4669 committed payments: every signature valid, no account ever negative, all 4 balances match",
+    "supplyStart": 4000,
+    "supplyEnd": 4000,
+    "supplyConserved": true,
+    "richestEnd": 2113,
+    "poorestEnd": 209,
+    "setupSeconds": 0.041194167,
+    "simSecondsPerRound": 0.0758238416,
+    "timestamp": "2026-09-25T16:55:42.424857+05:30"
+  },
+  {
+    "nodes": 100,
+    "online": 100,
+    "rounds": 10,
+    "txsPerRound": 500,
+    "startBalance": 1000,
+    "w": 100000,
+    "tauProposer": 26,
+    "tauStep": 2000,
+    "tauFinal": 10000,
+    "finalRounds": 10,
+    "tentativeRounds": 0,
+    "emptyRounds": 0,
+    "allAgreed": true,
+    "avgProposers": 24.5,
+    "avgVotersPerStep": 97.2,
+    "avgSeatsPerStep": 1997.15,
+    "votesPerRound": 682.4,
+    "sentPerNodePerRound": 6.824,
+    "kbReceivedPerNodePerRound": 218.58125,
+    "verifyMicrosPerVote": 118.94333333333333,
+    "nodeVerifyMsPerRound": 81.16693066666667,
+    "paymentsCommitted": 4720,
+    "paymentsRejected": 366,
+    "kinds": {
+      "double-spend": {
+        "committed": 115,
+        "refused": 57
+      },
+      "forged": {
+        "committed": 0,
+        "refused": 99
+      },
+      "normal": {
+        "committed": 4605,
+        "refused": 131
+      },
+      "overdraft": {
+        "committed": 0,
+        "refused": 79
+      }
+    },
+    "auditPassed": true,
+    "auditNote": "replayed 4720 committed payments: every signature valid, no account ever negative, all 100 balances match",
+    "supplyStart": 100000,
+    "supplyEnd": 100000,
+    "supplyConserved": true,
+    "richestEnd": 4049,
+    "poorestEnd": 13,
+    "setupSeconds": 0.039363792,
+    "simSecondsPerRound": 0.1667594041,
+    "timestamp": "2026-09-25T16:55:43.806867+05:30"
+  },
+  {
+    "nodes": 1000,
+    "online": 1000,
+    "rounds": 10,
+    "txsPerRound": 500,
+    "startBalance": 1000,
+    "w": 1000000,
+    "tauProposer": 26,
+    "tauStep": 2000,
+    "tauFinal": 10000,
+    "finalRounds": 10,
+    "tentativeRounds": 0,
+    "emptyRounds": 0,
+    "allAgreed": true,
+    "avgProposers": 25.8,
+    "avgVotersPerStep": 852.4,
+    "avgSeatsPerStep": 1994.35,
+    "votesPerRound": 6110,
+    "sentPerNodePerRound": 6.11,
+    "kbReceivedPerNodePerRound": 1957.109375,
+    "verifyMicrosPerVote": 139.44333333333333,
+    "nodeVerifyMsPerRound": 851.9987666666666,
+    "paymentsCommitted": 4805,
+    "paymentsRejected": 286,
+    "kinds": {
+      "double-spend": {
+        "committed": 107,
+        "refused": 75
+      },
+      "forged": {
+        "committed": 0,
+        "refused": 112
+      },
+      "normal": {
+        "committed": 4698,
+        "refused": 14
+      },
+      "overdraft": {
+        "committed": 0,
+        "refused": 85
+      }
+    },
+    "auditPassed": true,
+    "auditNote": "replayed 4805 committed payments: every signature valid, no account ever negative, all 1000 balances match",
+    "supplyStart": 1000000,
+    "supplyEnd": 1000000,
+    "supplyConserved": true,
+    "richestEnd": 2093,
+    "poorestEnd": 32,
+    "setupSeconds": 0.10102225,
+    "simSecondsPerRound": 0.9387552250000001,
+    "timestamp": "2026-09-25T16:55:53.637724+05:30"
+  },
+  {
+    "nodes": 1000,
+    "online": 900,
+    "rounds": 10,
+    "txsPerRound": 500,
+    "startBalance": 1000,
+    "w": 1000000,
+    "tauProposer": 26,
+    "tauStep": 2000,
+    "tauFinal": 10000,
+    "finalRounds": 10,
+    "tentativeRounds": 0,
+    "emptyRounds": 0,
+    "allAgreed": true,
+    "avgProposers": 25.3,
+    "avgVotersPerStep": 764.2,
+    "avgSeatsPerStep": 1797.3333333333333,
+    "votesPerRound": 5481.2,
+    "sentPerNodePerRound": 6.090222222222222,
+    "kbReceivedPerNodePerRound": 1755.696875,
+    "verifyMicrosPerVote": 119.21333333333334,
+    "nodeVerifyMsPerRound": 653.4321226666666,
+    "paymentsCommitted": 4805,
+    "paymentsRejected": 286,
+    "kinds": {
+      "double-spend": {
+        "committed": 107,
+        "refused": 75
+      },
+      "forged": {
+        "committed": 0,
+        "refused": 112
+      },
+      "normal": {
+        "committed": 4698,
+        "refused": 14
+      },
+      "overdraft": {
+        "committed": 0,
+        "refused": 85
+      }
+    },
+    "auditPassed": true,
+    "auditNote": "replayed 4805 committed payments: every signature valid, no account ever negative, all 1000 balances match",
+    "supplyStart": 1000000,
+    "supplyEnd": 1000000,
+    "supplyConserved": true,
+    "richestEnd": 2093,
+    "poorestEnd": 32,
+    "setupSeconds": 0.058921625,
+    "simSecondsPerRound": 0.9022650249999999,
+    "timestamp": "2026-09-25T16:56:02.717099+05:30"
+  },
+  {
+    "nodes": 10000,
+    "online": 10000,
+    "rounds": 5,
+    "txsPerRound": 500,
+    "startBalance": 1000,
+    "w": 10000000,
+    "tauProposer": 26,
+    "tauStep": 2000,
+    "tauFinal": 10000,
+    "finalRounds": 5,
+    "tentativeRounds": 0,
+    "emptyRounds": 0,
+    "allAgreed": true,
+    "avgProposers": 26.2,
+    "avgVotersPerStep": 1821.5666666666666,
+    "avgSeatsPerStep": 2009.7666666666667,
+    "votesPerRound": 17286.4,
+    "sentPerNodePerRound": 1.7286400000000002,
+    "kbReceivedPerNodePerRound": 5537.05,
+    "verifyMicrosPerVote": 163.59,
+    "nodeVerifyMsPerRound": 2827.8821760000005,
+    "paymentsCommitted": 2402,
+    "paymentsRejected": 144,
+    "kinds": {
+      "double-spend": {
+        "committed": 47,
+        "refused": 45
+      },
+      "forged": {
+        "committed": 0,
+        "refused": 58
+      },
+      "normal": {
+        "committed": 2355,
+        "refused": 0
+      },
+      "overdraft": {
+        "committed": 0,
+        "refused": 41
+      }
+    },
+    "auditPassed": true,
+    "auditNote": "replayed 2402 committed payments: every signature valid, no account ever negative, all 10000 balances match",
+    "supplyStart": 10000000,
+    "supplyEnd": 10000000,
+    "supplyConserved": true,
+    "richestEnd": 1690,
+    "poorestEnd": 10,
+    "setupSeconds": 0.305588875,
+    "simSecondsPerRound": 49.46348145,
+    "timestamp": "2026-09-25T17:00:10.412347+05:30"
+  }
+]

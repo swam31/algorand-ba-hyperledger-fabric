@@ -1,0 +1,60 @@
+--- fabric/consenter/chain.go
++++ fabric/consenter/chain.go
+@@ -148,3 +148,3 @@
+ 			if err := json.Unmarshal(payload, &prop); err == nil {
+-				if prop.Round == currentRound {
++				if prop.Round >= currentRound {
+ 					select {
+@@ -167,3 +167,3 @@
+ 					c.Unlock()
+-					if round == currentRound {
++					if round >= currentRound {
+ 						select {
+@@ -207,2 +207,4 @@
+ 	var pending []pBatch
++	futureProps := make(map[uint64]ProposalMsg)
++	futureWakeups := make(map[uint64]bool)
+ 
+@@ -211,2 +213,11 @@
+ 		var processChan <-chan time.Time
++
++		c.Lock()
++		currentRound := c.support.Height() + c.failedRounds
++		c.Unlock()
++
++		if _, ok := futureProps[currentRound]; ok {
++			processChan = time.After(0)
++		} else if futureWakeups[currentRound] {
++			processChan = time.After(0)
++		} else if len(pending) > 0 {
+-		if len(pending) > 0 {
+ 			processChan = time.After(0)
+@@ -242,5 +253,19 @@
+ 		case <-c.wakeupChan:
+-			c.proposeAndAgree(nil, false, nil, 0)
++			futureWakeups[currentRound] = true // Just buffer it for currentRound, handled by processChan
+ 		case prop := <-c.proposalChan:
++			futureProps[prop.Round] = prop
++		case <-processChan:
+ 			c.Lock()
+ 			currentRound := c.support.Height() + c.failedRounds
+ 			c.Unlock()
+-			fmt.Printf(">>> [ALGORAND BA*] mainLoop processing ProposalMsg for round %d (my round: %d)\n", prop.Round, currentRound)
+-			if prop.Round == currentRound {
+-				c.proposeAndAgree(nil, false, &prop, 0)
++
++			if prop, ok := futureProps[currentRound]; ok {
++				delete(futureProps, currentRound)
++				c.proposeAndAgree(nil, false, &prop, 0)
++			} else if futureWakeups[currentRound] {
++				delete(futureWakeups, currentRound)
++				c.proposeAndAgree(nil, false, nil, 0)
++			} else if len(pending) > 0 {
++				b := pending[0]
++				pending = pending[1:]
++				success, err := c.proposeAndAgree(b.envs, b.isConf, nil, b.retries)
++				if !success && err == nil {
++					b.retries++
++					pending = append([]pBatch{b}, pending...)
++				}
+ 			}

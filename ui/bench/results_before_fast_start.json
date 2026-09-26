@@ -1,0 +1,502 @@
+[
+  {
+    "scale": "1000",
+    "concurrency": 500,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 13.419,
+    "e2eTps": 74.52120128176466,
+    "ordTps": 74.52120128176466,
+    "blocks": 9,
+    "txPerBlock": 111.11111111111111,
+    "rounds": 9,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      15,
+      15,
+      15,
+      15
+    ],
+    "p50": 5112,
+    "p95": 8262,
+    "stalls": 0,
+    "timestamp": "2026-09-25T09:29:26.309Z",
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "before fast-start (2 s batch timer)"
+  },
+  {
+    "scale": "10000",
+    "concurrency": 500,
+    "submitted": 10000,
+    "totalTxs": 10000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 86.717,
+    "e2eTps": 115.31764244611783,
+    "ordTps": 115.31897227731908,
+    "blocks": 80,
+    "txPerBlock": 125,
+    "rounds": 80,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      95,
+      95,
+      95,
+      95
+    ],
+    "p50": 4036,
+    "p95": 7557,
+    "stalls": 0,
+    "timestamp": "2026-09-25T09:30:58.479Z",
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "before fast-start (2 s batch timer)"
+  },
+  {
+    "scale": "100000",
+    "concurrency": 500,
+    "submitted": 100000,
+    "totalTxs": 100000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 1053.235,
+    "e2eTps": 94.9455724505927,
+    "ordTps": 94.9455724505927,
+    "blocks": 869,
+    "txPerBlock": 115.07479861910241,
+    "rounds": 870,
+    "emptyRounds": 1,
+    "tentativeRounds": 0,
+    "wastedPct": 0.11494252873563218,
+    "ordererHeights": [
+      964,
+      964,
+      964,
+      964
+    ],
+    "p50": 4286,
+    "p95": 10878,
+    "stalls": 0,
+    "timestamp": "2026-09-25T09:48:50.380Z",
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "before fast-start (2 s batch timer)"
+  },
+  {
+    "scale": "1000",
+    "concurrency": 25,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 154.544,
+    "e2eTps": 6.470649135521275,
+    "ordTps": 6.470691005092434,
+    "blocks": 146,
+    "txPerBlock": 6.8493150684931505,
+    "rounds": 146,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      245,
+      245,
+      245,
+      245
+    ],
+    "p50": 4114,
+    "p95": 6227,
+    "stalls": 0,
+    "timestamp": "2026-09-25T09:57:36.534Z",
+    "workload": "CreateAsset",
+    "consensus": "algorand",
+    "build": "before fast-start (2 s batch timer)"
+  },
+  {
+    "workload": "payments",
+    "scale": "1000",
+    "concurrency": 500,
+    "accounts": 1000,
+    "badFraction": 0.06,
+    "submitted": 1000,
+    "totalTxs": 464,
+    "invalid": 479,
+    "errors": 57,
+    "complete": true,
+    "durationSec": 13.077,
+    "e2eTps": 35.48214422268104,
+    "ordTps": 35.48214422268104,
+    "blocks": 9,
+    "txPerBlock": 104.77777777777777,
+    "rounds": 9,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      58,
+      58,
+      58,
+      58
+    ],
+    "p50": 4687,
+    "p95": 7988,
+    "kinds": {
+      "forged": {
+        "sent": 18,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 18,
+        "reasons": {
+          "refused: access denied: channel [mychannel] creator org [Org1MSP]": 18
+        }
+      },
+      "theft": {
+        "sent": 19,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 19,
+        "reasons": {
+          "refused: not your account: acct belongs to another identity": 19
+        }
+      },
+      "overdraft": {
+        "sent": 15,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 15,
+        "reasons": {
+          "refused: insufficient funds": 15
+        }
+      },
+      "normal": {
+        "sent": 912,
+        "committed": 452,
+        "invalid": 455,
+        "refused": 5,
+        "reasons": {
+          "invalid: MVCC_READ_CONFLICT": 455,
+          "refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match": 5
+        }
+      },
+      "double-spend": {
+        "sent": 36,
+        "committed": 12,
+        "invalid": 24,
+        "refused": 0,
+        "reasons": {
+          "invalid: MVCC_READ_CONFLICT": 24
+        }
+      }
+    },
+    "doubleSpendsBothCommitted": 0,
+    "audit": {
+      "issued": 1000000,
+      "supplyNow": 1000000,
+      "supplyConserved": true,
+      "accountsChecked": 1000,
+      "balanceMismatches": 0,
+      "negativeBalances": 0,
+      "passed": true
+    },
+    "stalls": 0,
+    "timestamp": "2026-09-25T11:40:04.942Z",
+    "retries": 0,
+    "attempts": 1000,
+    "note": "no retries: raw conflict rate",
+    "consensus": "algorand",
+    "build": "before fast-start (2 s batch timer)"
+  },
+  {
+    "workload": "payments",
+    "scale": "1000",
+    "concurrency": 500,
+    "accounts": 1000,
+    "badFraction": 0.06,
+    "retries": 5,
+    "attempts": 1931,
+    "submitted": 1000,
+    "totalTxs": 936,
+    "invalid": 18,
+    "errors": 46,
+    "complete": true,
+    "durationSec": 33.524,
+    "e2eTps": 27.920295907409617,
+    "ordTps": 27.9211287772574,
+    "blocks": 28,
+    "txPerBlock": 34.07142857142857,
+    "rounds": 28,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      95,
+      95,
+      95,
+      95
+    ],
+    "p50": 7948,
+    "p95": 21855,
+    "kinds": {
+      "forged": {
+        "sent": 16,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 16,
+        "reasons": {
+          "refused: access denied: channel [mychannel] creator org [Org1MSP]": 16
+        }
+      },
+      "theft": {
+        "sent": 13,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 13,
+        "reasons": {
+          "refused: not your account: acct belongs to another identity": 13
+        }
+      },
+      "overdraft": {
+        "sent": 17,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 17,
+        "reasons": {
+          "refused: insufficient funds": 17
+        }
+      },
+      "normal": {
+        "sent": 928,
+        "committed": 925,
+        "invalid": 3,
+        "refused": 0,
+        "reasons": {
+          "invalid: MVCC_READ_CONFLICT": 3
+        }
+      },
+      "double-spend": {
+        "sent": 26,
+        "committed": 11,
+        "invalid": 15,
+        "refused": 0,
+        "reasons": {
+          "invalid: MVCC_READ_CONFLICT": 15
+        }
+      }
+    },
+    "doubleSpendsBothCommitted": 0,
+    "audit": {
+      "issued": 1000000,
+      "supplyNow": 1000000,
+      "supplyConserved": true,
+      "accountsChecked": 1000,
+      "balanceMismatches": 0,
+      "negativeBalances": 0,
+      "passed": true
+    },
+    "stalls": 0,
+    "timestamp": "2026-09-25T11:41:58.070Z",
+    "consensus": "algorand",
+    "build": "before fast-start (2 s batch timer)"
+  },
+  {
+    "workload": "payments",
+    "scale": "10000",
+    "concurrency": 500,
+    "accounts": 1000,
+    "badFraction": 0.06,
+    "retries": 5,
+    "attempts": 21402,
+    "submitted": 10000,
+    "totalTxs": 9081,
+    "invalid": 450,
+    "errors": 469,
+    "complete": true,
+    "durationSec": 233.964,
+    "e2eTps": 38.81366364056009,
+    "ordTps": 38.814327235424855,
+    "blocks": 193,
+    "txPerBlock": 49.38341968911917,
+    "rounds": 193,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      288,
+      288,
+      288,
+      288
+    ],
+    "p50": 8025,
+    "p95": 26861,
+    "kinds": {
+      "forged": {
+        "sent": 139,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 139,
+        "reasons": {
+          "refused: access denied: channel [mychannel] creator org [Org1MSP]": 139
+        }
+      },
+      "theft": {
+        "sent": 148,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 148,
+        "reasons": {
+          "refused: not your account: acct belongs to another identity": 148
+        }
+      },
+      "overdraft": {
+        "sent": 162,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 162,
+        "reasons": {
+          "refused: insufficient funds": 162
+        }
+      },
+      "normal": {
+        "sent": 9331,
+        "committed": 9019,
+        "invalid": 297,
+        "refused": 15,
+        "reasons": {
+          "refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match": 13,
+          "invalid: MVCC_READ_CONFLICT": 297,
+          "refused: insufficient funds": 2
+        }
+      },
+      "double-spend": {
+        "sent": 220,
+        "committed": 62,
+        "invalid": 153,
+        "refused": 5,
+        "reasons": {
+          "invalid: MVCC_READ_CONFLICT": 153,
+          "refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match": 5
+        }
+      }
+    },
+    "doubleSpendsBothCommitted": 0,
+    "audit": {
+      "issued": 1000000,
+      "supplyNow": 1000000,
+      "supplyConserved": true,
+      "accountsChecked": 1000,
+      "balanceMismatches": 0,
+      "negativeBalances": 0,
+      "passed": true
+    },
+    "stalls": 0,
+    "timestamp": "2026-09-25T11:46:06.269Z",
+    "consensus": "algorand",
+    "build": "before fast-start (2 s batch timer)"
+  },
+  {
+    "workload": "payments",
+    "scale": "100000",
+    "concurrency": 500,
+    "accounts": 1000,
+    "badFraction": 0.06,
+    "retries": 5,
+    "attempts": 210889,
+    "submitted": 100000,
+    "totalTxs": 88032,
+    "invalid": 5097,
+    "errors": 6871,
+    "complete": true,
+    "durationSec": 1798.492,
+    "e2eTps": 48.947673940167654,
+    "ordTps": 48.94791888497139,
+    "blocks": 1624,
+    "txPerBlock": 57.345443349753694,
+    "rounds": 1624,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      1912,
+      1912,
+      1912,
+      1912
+    ],
+    "p50": 6622,
+    "p95": 23245,
+    "kinds": {
+      "forged": {
+        "sent": 1469,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 1469,
+        "reasons": {
+          "refused: access denied: channel [mychannel] creator org [Org1MSP]": 1469
+        }
+      },
+      "theft": {
+        "sent": 1539,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 1539,
+        "reasons": {
+          "refused: not your account: acct belongs to another identity": 1539
+        }
+      },
+      "overdraft": {
+        "sent": 1432,
+        "committed": 0,
+        "invalid": 0,
+        "refused": 1432,
+        "reasons": {
+          "refused: insufficient funds": 1432
+        }
+      },
+      "normal": {
+        "sent": 92660,
+        "committed": 87149,
+        "invalid": 3119,
+        "refused": 2392,
+        "reasons": {
+          "refused: insufficient funds": 2346,
+          "invalid: MVCC_READ_CONFLICT": 3119,
+          "refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match": 46
+        }
+      },
+      "double-spend": {
+        "sent": 2900,
+        "committed": 883,
+        "invalid": 1978,
+        "refused": 39,
+        "reasons": {
+          "invalid: MVCC_READ_CONFLICT": 1978,
+          "refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match": 39
+        }
+      }
+    },
+    "doubleSpendsBothCommitted": 0,
+    "audit": {
+      "issued": 1000000,
+      "supplyNow": 1000000,
+      "supplyConserved": true,
+      "accountsChecked": 1000,
+      "balanceMismatches": 0,
+      "negativeBalances": 0,
+      "passed": true
+    },
+    "stalls": 0,
+    "timestamp": "2026-09-25T12:16:32.501Z",
+    "consensus": "algorand",
+    "build": "before fast-start (2 s batch timer)"
+  }
+]

@@ -1,0 +1,34 @@
+Starting payments benchmark: 10000 transfers across 1000 accounts ($1000000 issued), concurrency 500, 6% deliberately bad, timeout 300s
+  t=10s done=380 committed=338
+  t=20s done=836 committed=777
+  t=30s done=1307 committed=1214
+  t=40s done=1734 committed=1592
+  t=50s done=2307 committed=2100
+  t=60s done=2787 committed=2548
+  t=70s done=3154 committed=2877
+  t=80s done=3715 committed=3389
+  t=90s done=4198 committed=3832
+  t=101s done=4522 committed=4126
+  t=111s done=4840 committed=4400
+  t=121s done=5357 committed=4867
+  t=131s done=5676 committed=5159
+  t=141s done=6221 committed=5655
+  t=151s done=6831 committed=6195
+  t=161s done=7194 committed=6516
+  t=171s done=7638 committed=6916
+  t=181s done=8153 committed=7384
+  t=191s done=8695 committed=7877
+  t=201s done=9236 committed=8365
+  t=211s done=9701 committed=8797
+  t=221s done=9975 committed=9058
+  t=231s done=9997 committed=9078
+Finished in 234.0s: 9081 committed, 450 invalidated at commit, 469 refused before ordering
+  38.8 committed tps | 193 blocks | 193 BA* rounds, 0 empty | p50 8025ms p95 26861ms | heights [288,288,288,288]
+  forged        sent    139  committed      0  invalid     0  refused   139  {"refused: access denied: channel [mychannel] creator org [Org1MSP]":139}
+  theft         sent    148  committed      0  invalid     0  refused   148  {"refused: not your account: acct belongs to another identity":148}
+  overdraft     sent    162  committed      0  invalid     0  refused   162  {"refused: insufficient funds":162}
+  normal        sent   9331  committed   9019  invalid   297  refused    15  {"refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match":13,"invalid: MVCC_READ_CONFLICT":297,"refused: insufficient funds":2}
+  double-spend  sent    220  committed     62  invalid   153  refused     5  {"invalid: MVCC_READ_CONFLICT":153,"refused: 10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info | ProposalResponsePayloads do not match":5}
+  21402 submissions for 10000 transfers: 11402 resubmissions after losing a race (max 5 per transfer)
+  double-spend pairs with BOTH halves committed: 0 (must be 0)
+  audit: supply $1000000 of $1000000 issued (conserved=true), 1000 balances checked, 0 mismatches, 0 negative -> PASSED

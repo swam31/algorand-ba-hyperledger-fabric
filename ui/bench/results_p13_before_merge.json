@@ -1,0 +1,58 @@
+[
+  {
+    "scale": "1000",
+    "concurrency": 500,
+    "submitted": 1000,
+    "totalTxs": 1000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 15.327,
+    "e2eTps": 65.24434005350035,
+    "ordTps": 65.24434005350035,
+    "blocks": 11,
+    "txPerBlock": 90.9090909090909,
+    "rounds": 11,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      17,
+      17,
+      17,
+      17
+    ],
+    "p50": 5916,
+    "p95": 9197,
+    "stalls": 0,
+    "timestamp": "2026-09-25T09:21:15.640Z"
+  },
+  {
+    "scale": "10000",
+    "concurrency": 500,
+    "submitted": 10000,
+    "totalTxs": 10000,
+    "invalid": 0,
+    "errors": 0,
+    "complete": true,
+    "durationSec": 267.448,
+    "e2eTps": 37.39044599323981,
+    "ordTps": 37.39044599323981,
+    "blocks": 254,
+    "txPerBlock": 39.37007874015748,
+    "rounds": 254,
+    "emptyRounds": 0,
+    "tentativeRounds": 0,
+    "wastedPct": 0,
+    "ordererHeights": [
+      271,
+      271,
+      271,
+      271
+    ],
+    "p50": 9316,
+    "p95": 42561,
+    "stalls": 0,
+    "timestamp": "2026-09-25T09:26:01.790Z"
+  }
+]

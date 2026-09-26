@@ -1,0 +1,74 @@
+[
+  {
+    "scale": "1000",
+    "concurrency": 500,
+    "totalTxs": 0,
+    "durationSec": 185.763,
+    "e2eTps": 0,
+    "ordTps": 0,
+    "blocks": 0,
+    "p50": 0,
+    "p95": 0,
+    "stalls": 0
+  },
+  {
+    "scale": "1000",
+    "concurrency": 500,
+    "totalTxs": 1000,
+    "durationSec": 5.522,
+    "e2eTps": 181.09380659181454,
+    "ordTps": 228.78059940517042,
+    "blocks": 2,
+    "p50": 1032,
+    "p95": 1336,
+    "stalls": 0
+  },
+  {
+    "scale": "10000",
+    "concurrency": 500,
+    "totalTxs": 501,
+    "durationSec": 301.36,
+    "e2eTps": 1.6624634988054154,
+    "ordTps": 1.671482047415375,
+    "blocks": 2,
+    "p50": 2187,
+    "p95": 2847,
+    "stalls": "Incomplete"
+  },
+  {
+    "scale": "1000",
+    "concurrency": 500,
+    "totalTxs": 100,
+    "durationSec": 301.3,
+    "e2eTps": 0.3318951211417192,
+    "ordTps": 0.3335523660537086,
+    "blocks": 1,
+    "p50": 160156,
+    "p95": 288989,
+    "stalls": "Incomplete"
+  },
+  {
+    "scale": "1000",
+    "concurrency": 500,
+    "totalTxs": 0,
+    "durationSec": 301.415,
+    "e2eTps": 0,
+    "ordTps": 0,
+    "blocks": 0,
+    "p50": 0,
+    "p95": 0,
+    "stalls": "Incomplete"
+  },
+  {
+    "scale": "1000",
+    "concurrency": 500,
+    "totalTxs": 206,
+    "durationSec": 301.344,
+    "e2eTps": 0.6836041202081342,
+    "ordTps": 0.6873884245124047,
+    "blocks": 1,
+    "p50": 79581,
+    "p95": 133094,
+    "stalls": "Incomplete"
+  }
+]

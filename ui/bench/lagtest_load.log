@@ -1,0 +1,11 @@
+Starting benchmark: 3000 txs, concurrency 200, timeout 300s
+  t=10s submitted=464 committed=330 invalid=0 errors=0
+  t=20s submitted=768 committed=678 invalid=0 errors=0
+  t=30s submitted=1136 committed=965 invalid=0 errors=0
+  t=40s submitted=1346 committed=1146 invalid=0 errors=0
+  t=50s submitted=1727 committed=1527 invalid=0 errors=0
+  t=60s submitted=2264 committed=2064 invalid=0 errors=0
+  t=70s submitted=2747 committed=2592 invalid=0 errors=0
+Finished in 79.3s: committed 3000/3000, invalid 0, errors 0
+  e2e 37.8 tps | 72 blocks (42 tx/block) | 72 BA* rounds, 0 empty (0.0% wasted) | p50 4034ms p95 13646ms
+  orderer heights after run: [78,78,78,78]

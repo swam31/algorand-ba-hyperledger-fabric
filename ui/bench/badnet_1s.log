@@ -1,0 +1,42 @@
+Peers pull blocks from: orderer2, orderer; faults target orderer3, orderer4
+
+=== baseline@1 s window: Healthy network (no fault) [1 s window]
+  committed 1219 in 90s (13.5 tps), p50 3150 ms, p95 6783 ms, 69 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 69/0/0 · orderer2 69/0/0 · orderer3 69/0/0 · orderer4 69/0/0
+  after removing the fault: all four identical after 0 s at height 77/77/77/77 hash dc5ae9c3bb92
+
+=== wan-100@1 s window: Every consensus message delayed 100 ms ± 20 ms (a continent-wide WAN) [1 s window]
+  orderer: delay 100ms 20ms
+orderer2: delay 100ms 20ms
+orderer3: delay 100ms 20ms
+orderer4: delay 100ms 20ms
+  committed 971 in 90s (10.8 tps), p50 4494 ms, p95 6828 ms, 55 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 55/0/0 · orderer2 55/0/0 · orderer3 55/0/0 · orderer4 55/0/0
+  after removing the fault: all four identical after 0 s at height 135/135/135/135 hash 70c163f9024a
+
+=== wan-500@1 s window: Every consensus message delayed 500 ms ± 300 ms (bad WAN; packets reordered) [1 s window]
+  orderer: delay 500ms 300ms
+orderer2: delay 500ms 300ms
+orderer3: delay 500ms 300ms
+orderer4: delay 500ms 300ms
+  committed 151 in 90s (1.7 tps), p50 20667 ms, p95 34112 ms, 6 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 6/0/4 · orderer2 6/0/4 · orderer3 6/0/4 · orderer4 6/0/4
+  after removing the fault: all four identical after 0 s at height 141/141/141/141 hash 5515aa7a564c
+
+=== loss-10@1 s window: 10% of consensus packets dropped (TCP retransmits them late) [1 s window]
+  orderer: loss 10%
+orderer2: loss 10%
+orderer3: loss 10%
+orderer4: loss 10%
+  committed 975 in 90s (10.8 tps), p50 4060 ms, p95 9718 ms, 55 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 55/0/1 · orderer2 55/0/1 · orderer3 55/0/1 · orderer4 55/0/1
+  after removing the fault: all four identical after 0 s at height 198/198/198/198 hash 35ff77ea32a0
+
+=== very-slow@1 s window: All consensus messages delayed 1.5 s ± 0.5 s: longer than the 1 s proposal window [1 s window]
+  orderer: delay 1500ms 500ms
+orderer2: delay 1500ms 500ms
+orderer3: delay 1500ms 500ms
+orderer4: delay 1500ms 500ms
+  committed 0 in 90s (0.0 tps), p50 0 ms, p95 0 ms, 0 blocks
+  rounds per orderer (FINAL/TENTATIVE/EMPTY): orderer 0/0/6 · orderer2 0/0/6 · orderer3 0/0/6 · orderer4 0/0/6
+  after removing the fault: all four identical after 0 s at height 198/198/198/198 hash 35ff77ea32a0
