@@ -6,6 +6,7 @@ const fs = require('fs');
 const grpc = require('@grpc/grpc-js');
 const { connect, signers } = require('@hyperledger/fabric-gateway');
 const fetch = require('node-fetch');
+const { spawn } = require('child_process');
 const { History, follow } = require('./history');
 
 // ---------------------------------------------------------
@@ -36,6 +37,8 @@ const state = {
     rounds: [],
     blocks: [],
     votes: [],
+    activity: [],
+    demo: { running: false, count: 0, output: '' },
 };
 
 // ---------------------------------------------------------
@@ -92,6 +95,36 @@ app.get('/api/scale/:nodes', (req, res) => {
     const name = `scale_history_${req.params.nodes.replace(/[^0-9a-z_]/gi, '')}.json`;
     const d = readJSON(benchFile(name), null);
     return d ? res.json(d) : res.status(404).json({ error: 'no simulation run for that size' });
+});
+
+// "Send payments" on the Transaction Flow panel: a small, slow run of the
+// payments load generator, so every transaction can be followed on screen.
+// Its results go to a separate file to keep them out of the benchmark table.
+const DEMO_SIZES = { 10: 10, 50: 10 }; // transfers -> how many in flight: bursts fill each block
+app.post('/api/demo/payments/:count', (req, res) => {
+    const count = Number(req.params.count);
+    if (!DEMO_SIZES[count]) return res.status(400).json({ error: 'count must be 10 or 50' });
+    if (state.demo.running) return res.status(409).json({ error: 'a run is already in progress' });
+    state.demo = { running: true, count, output: `Sending ${count} payments…` };
+    broadcastState();
+    const child = spawn(process.execPath, ['paygen.js', String(count), String(DEMO_SIZES[count]), '1000', '0.06'], {
+        cwd: path.join(__dirname, 'bench'),
+        env: { ...process.env, RESULTS_FILE: benchFile('.demo_results.json') },
+    });
+    let out = '';
+    child.stdout.on('data', (d) => { out += d; });
+    child.stderr.on('data', (d) => { out += d; });
+    child.on('close', (code) => {
+        const done = out.split('\n').find((l) => l.startsWith('Finished in'));
+        const audit = out.split('\n').find((l) => l.trim().startsWith('audit:'));
+        state.demo = {
+            running: false,
+            count,
+            output: done ? `${done}${audit ? `. ${audit.trim()}` : ''}` : `Run failed (exit ${code}): ${out.trim().split('\n').pop()}`,
+        };
+        broadcastState();
+    });
+    res.json({ started: count });
 });
 
 app.get('/benchmarks', (req, res) => {
@@ -256,6 +289,7 @@ async function startBlockListener() {
     };
     follow(connectPeer, history, () => {
         state.blocks = history.recentBlocks(30);
+        state.activity = history.activity();
         broadcastState();
     });
 }

@@ -15,5 +15,7 @@ How it gets its data:
   test network regenerates them.
 - **Benchmark results** from `bench/*.json`.
 
-Pages in `public/`: `app.js` (health, rounds, blocks), `flow.js` (live votes),
+Pages in `public/`: `app.js` (health, rounds, blocks), `txflow.js` (each new
+block's transactions animated through execute, order and validate),
+`flow.js` (live votes),
 `rounds.js` (history, accounts), `bench.js`, `compare.js`, `scale.js`.

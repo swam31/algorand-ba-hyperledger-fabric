@@ -16,3 +16,7 @@ node_modules/
 ui/bench/.badnet_row_*.json
 
 .DS_Store
+ui/bench/.demo_results.json
+
+# Personal presentation notes (kept local)
+docs/PRESENTATION_PREP.*

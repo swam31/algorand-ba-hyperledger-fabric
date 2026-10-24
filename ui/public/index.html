@@ -13,6 +13,39 @@
     </header>
 
     <main class="grid-container">
+        <!-- Transaction Flow: each new block's transactions, replayed step by step -->
+        <section class="panel auto" style="grid-column: 1 / -1;">
+            <h2>Transaction Flow</h2>
+            <p class="hint">Every new block is replayed here with its real transactions, proposer and outcome, taken from the ledger. A client sends each transaction. The Org1 and Org2 peers run the chaincode and sign it. The four orderers agree on a block with BA*. Every peer then validates the block and adds it to its ledger. The motion is slowed down so you can follow it. Transfers that the peers refuse at step 2 never reach the orderers, so they are listed under "Stopped before reaching the ledger" further down.</p>
+            <div class="toolbar">
+                <button id="txf-send10" class="btn" data-count="10">Send 10 payments</button>
+                <button id="txf-send50" class="btn" data-count="50">Send 50 payments</button>
+                <label class="hint" style="margin: 0;">Speed
+                    <select id="txf-speed">
+                        <option value="0.5">Slow</option>
+                        <option value="1" selected>Normal</option>
+                        <option value="2">Fast</option>
+                    </select>
+                </label>
+                <button id="txf-pause" class="btn">Pause</button>
+                <span id="txf-demo" class="hint"></span>
+            </div>
+            <div id="txf-status" class="hint"></div>
+            <div id="txf-caption" class="txf-caption"></div>
+            <div id="txf-canvas-container" class="txf-stage"><canvas id="txf-canvas"></canvas></div>
+            <p class="hint txf-legend">
+                <span class="chip" style="background:#3b82f6"></span>transaction on its way
+                <span class="chip" style="background:#fbbf24; border-radius: 50%;"></span>signed by both peers
+                <span class="chip" style="background:#10b981"></span>valid
+                <span class="chip" style="background:#ef4444"></span>rejected at commit
+                · Dots between orderers are BA* votes: <span style="color:#a78bfa">Reduction</span>, <span style="color:#38bdf8">BinaryBA*</span>, <span style="color:#fbbf24">FINAL</span>.
+                The gold ring marks the orderer that won the proposer lottery. A dashed link in the ledger row means empty rounds.
+            </p>
+            <h3>Latest transactions</h3>
+            <p class="hint">Click one to open its round in Round History.</p>
+            <div id="txf-feed" class="txf-feed"></div>
+        </section>
+
         <!-- Region 0: Consensus Flow -->
         <section class="panel flow-panel" style="grid-column: 1 / -1;">
             <h2>Consensus Flow</h2>
@@ -225,6 +258,7 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="flow.js"></script>
+    <script src="txflow.js"></script>
     <script src="bench.js"></script>
     <script src="app.js"></script>
     <script src="rounds.js"></script>

@@ -253,6 +253,35 @@ class History {
             txs: b.txs.slice(0, 6).map((t) => ({ id: t.id, valid: t.valid, status: t.status })),
         }));
     }
+
+    // The newest blocks with who paid whom, for the Transaction Flow panel,
+    // oldest first. Like recentBlocks it is pushed several times a second, so
+    // each block carries only its first few transactions.
+    activity(n = 10, perBlock = 12) {
+        const out = [];
+        for (let i = this.blocks.length - 1; i >= 1 && out.length < n; i--) {
+            const b = this.blocks[i];
+            const prev = this.blocks[i - 1];
+            const m = b.meta || {};
+            out.push({
+                number: b.number,
+                round: b.meta ? m.round : null,
+                emptyBefore: b.meta && prev.meta ? m.round - prev.meta.round - 1 : 0,
+                proposer: m.proposer || null,
+                outcome: m.outcome || null,
+                steps: m.steps ?? null,
+                time: m.time ?? null,
+                txCount: b.txs.length,
+                valid: b.txs.filter((t) => t.valid).length,
+                txs: b.txs.slice(0, perBlock).map((t) => ({
+                    id: t.id, type: t.type, chaincode: t.chaincode, fn: t.fn,
+                    from: t.from, to: t.to, amount: t.amount,
+                    valid: t.valid, status: t.status, creator: t.creator, time: t.time,
+                })),
+            });
+        }
+        return out.reverse();
+    }
 }
 
 // Streams the whole chain from block 0 and keeps following it. After a

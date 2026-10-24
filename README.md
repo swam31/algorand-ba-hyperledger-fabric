@@ -103,6 +103,7 @@ node paygen.js 2000 100 1000 0.06  # 2,000 transfers between 1,000 $1,000 accoun
 
 | Panel | Shows |
 |---|---|
+| Transaction Flow | Each new block replayed as an animation with its real transactions: client → both peers endorse → orderers vote (proposer ringed) → block → peers validate (green valid, red rejected) → ledger row. A feed lists each transfer with its verdict. **Send 10 / 50 payments** runs a small `paygen.js` burst to watch; its results go to `bench/.demo_results.json`, not the benchmark table. |
 | Consensus Flow | The current round live: votes travelling between the 4 orderers, delivered/sent per link, and a per-step table of who voted for which block, with seats. PAUSE and use the slider to replay earlier rounds. |
 | Round History | Every round rebuilt from the ledger: outcome, proposer, block, transactions. Click a round for its transactions and votes. Search by round, transaction ID or account. |
 | Accounts & Payments | Balances recomputed by replaying the ledger, each account's history, and attacks stopped before reaching the ledger |

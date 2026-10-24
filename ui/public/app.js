@@ -4,6 +4,7 @@ ws.onmessage = (event) => {
     const state = JSON.parse(event.data);
     renderDashboard(state);
     if (window.updateFlow) window.updateFlow(state);
+    if (window.updateTxFlow) window.updateTxFlow(state);
 };
 
 function renderDashboard(state) {

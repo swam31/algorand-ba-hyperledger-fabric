@@ -104,7 +104,7 @@
         }
         document.querySelectorAll('#hist-body tr').forEach((tr) => tr.classList.toggle('selected', Number(tr.dataset.round) === r));
         const head = d.outcome === 'EMPTY'
-            ? `<p>No block was written. Either no orderer won proposer sortition, or the proposal reached too few orderers inside the 1 s priority window, so BA* agreed on the empty block. Nothing is lost: the transactions are proposed again next round.</p>`
+            ? `<p>No block was written. Either no orderer won proposer sortition, or the proposal reached too few orderers inside the proposal window (250 ms on this network), so BA* agreed on the empty block. Nothing is lost: the transactions are proposed again next round.</p>`
             : `<p>Block <b>${d.block}</b>, proposed by <b>${esc(d.proposer)}</b>, reached <b class="outcome-${d.outcome.toLowerCase()}">${d.outcome}</b> after ${d.steps} BinaryBA* step${d.steps === 1 ? '' : 's'} at ${time(d.time)}.
                ${d.valid} transaction${d.valid === 1 ? '' : 's'} valid${d.invalid ? `, <span class="tx-invalid">${d.invalid} invalidated at commit</span> (MVCC_READ_CONFLICT means another transaction in the chain changed the same account first; this is how Fabric stops a double spend)` : ''}.</p>`;
         const nodes = d.nodes ? `<p class="hint">Per orderer: ${NODES.filter((n) => d.nodes[n]).map((n) => `${n} ${d.nodes[n].outcome} in ${d.nodes[n].durationMs} ms`).join(' · ')}</p>` : '';
@@ -120,6 +120,7 @@
         </div>`;
         if (highlightTx) $('hist-detail').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    window.showRound = showRound; // the Transaction Flow feed links here
 
     // ---------------------------------------------------------- search
     let refusedCache = [];
